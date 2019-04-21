@@ -18,6 +18,7 @@ class User {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
+                ", authority='" + authority + '\'' +
                 '}';
     }
 }
