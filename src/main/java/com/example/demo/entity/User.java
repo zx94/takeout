@@ -2,10 +2,15 @@ package com.example.demo.entity;
 
 import java.util.UUID;
 import lombok.Data;
+import com.example.demo.helper.SnowflakeIdWorker;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 public class User {
-    private UUID id;
+    @Autowired
+    private SnowflakeIdWorker snowflakeIdWorker;
+
+    private long id;
 
     private String userName;
 

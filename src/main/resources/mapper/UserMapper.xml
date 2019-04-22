@@ -2,41 +2,58 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.shujuku.mapper.UserMapper">
-    <resultMap id="result" type="com.example.shujuku.entity.User">
-        <result property="name" column="name" />
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <resultMap id="result" type="com.example.demo.entity.User">
+        <result property="userName" column="userName" />
         <result property="password" column="password" />
-        <result property="number" column="number"/>
-
+        <result property="authority" column="authority"/>
     </resultMap>
 
-    <select id="ListUser" resultMap="result">
+    <select id="listUser" resultMap="result">
         SELECT * FROM user
     </select>
 
     <select id="findUserByName" resultMap="result">
-        SELECT * FROM user where name=#{name}
+        SELECT * FROM user where name=#{userName}
     </select>
 
-    <insert id="insertUser" parameterType="com.example.shujuku.entity.User"
+    <!-- 根据id获取用户信息 -->
+    <select id="selectById" resultType="user" parameterType="long">
+        SELECT
+        *
+        FROM
+        user
+        WHERE
+        id=#{id}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.demo.entity.User"
             keyProperty="id" useGeneratedKeys="true">
         INSERT INTO user
         (
-        id,name,password,number
+        id,userName,password,authority
         )
         VALUES (
         #{id},
-        #{name, jdbcType=VARCHAR},
-        #{password, jdbcType=VARCHAR},
-        #{number}
+        #{userName},
+        #{password},
+        #{authority}
         )
     </insert>
 
-    <delete id="delete" parameterType="int">
+    <delete id="delete" parameterType="long">
         delete from user where id=#{id}
     </delete>
 
-    <update id="Update" parameterType="com.example.shujuku.entity.User">
-        update user set user.name=#{name},user.password=#{password},user.number=#{number} where user.id=#{id}
+    <!-- 修改用户信息 -->
+    <update id="update" parameterType="com.example.demo.entity.User">
+        UPDATE
+        user
+        SET
+        user.password=#{password}
+        user.authority=#{authority}
+        WHERE
+        user.id=#{id}
     </update>
+
 </mapper>

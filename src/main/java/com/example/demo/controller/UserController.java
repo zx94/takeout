@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/User", method = { RequestMethod.GET, RequestMethod.POST })
+@RequestMapping(value = "/user", method = { RequestMethod.GET, RequestMethod.POST })
 public class UserController {
     @Autowired
     private UserService userservice;
 
-    @RequestMapping("/ListUser")
+    @RequestMapping("/listUser")
     @ResponseBody
-    public List<User> ListUser(){
-        return userservice.ListUser();
+    public List<User> listUser(){
+        return userservice.listUser();
     }
 
-    @RequestMapping("/ListUserByname")
+    @RequestMapping("/listUserByname")
     @ResponseBody
-    public List<User> ListUserByname(String name){
+    public List<User> listUserByname(String name){
         return userservice.findByName(name);
     }
 
@@ -39,15 +39,24 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(User user) {
-        int result = userservice.Update(user);
+    @RequestMapping(value = "/fogotPassword", method = RequestMethod.POST)
+    public String fogotPassword(User user) {
+        long result = userservice.forgotPassword(user.getId(),user.getPassword());
         if (result >= 1) {
             return "修改成功";
         } else {
             return "修改失败";
         }
+    }
 
+    @RequestMapping(value = "/changeAuthority", method = RequestMethod.POST)
+    public String changeAuthority(User user) {
+        long result = userservice.changeAuthority(user.getId(),user.getAuthority());
+        if (result >= 1) {
+            return "修改成功";
+        } else {
+            return "修改失败";
+        }
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)

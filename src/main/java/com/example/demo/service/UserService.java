@@ -11,24 +11,36 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public List<User> findByName(String name) {
-        return userMapper.findUserByName(name);
-    }
-
     public User insertUser(User user) {
         userMapper.insertUser(user);
         return user;
     }
-    public List<User> ListUser(){
-        return userMapper.ListUser();
+
+    public List<User> listUser(){
+        return userMapper.listUser();
     }
 
-
-    public int Update(User user){
-        return userMapper.Update(user);
+    public List<User> findByName(String name) {
+        return userMapper.findUserByName(name);
     }
 
-    public int delete(int id){
+    public User findById(long id) {
+        return userMapper.findUserById(id);
+    }
+
+    public long changeAuthority(long id,String authority){
+        User user=findById(id);
+        user.setAuthority(authority);
+        return userMapper.update(user);
+    }
+
+    public long forgotPassword(long id,String password){
+        User user=findById(id);
+        user.setPassword(password);
+        return userMapper.update(user);
+    }
+
+    public int delete(long id){
         return userMapper.delete(id);
     }
 }

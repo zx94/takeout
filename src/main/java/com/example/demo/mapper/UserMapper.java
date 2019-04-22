@@ -10,12 +10,17 @@ public interface UserMapper {
 
     List<User> findUserByName(String name);
 
-    List<User> ListUser();
+    /**
+     * 根据id获取用户信息
+     */
+    User findUserById(long id);
+
+    List<User> listUser();
 
     int insertUser(User user);
 
-    int delete(int id);
+    int delete(long id);
 
-    int Update(User user);
+    long update(User user);
 }
 
