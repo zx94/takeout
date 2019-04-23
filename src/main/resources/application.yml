@@ -14,3 +14,10 @@ spring:
     configuration:
     #开启驼峰命名法
     map-underscore-to-camel-case: true
+
+  freemarker:
+    template-loader-path: classpath:/templates/
+
+#  security:
+#    basic:
+#      enabled: false
