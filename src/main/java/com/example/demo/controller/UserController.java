@@ -4,28 +4,31 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/user", method = { RequestMethod.GET, RequestMethod.POST })
+@RequestMapping(value = "/user")
 public class UserController {
     @Autowired
     private UserService userservice;
 
-    @RequestMapping("/listUser")
-    @ResponseBody
-    public List<User> listUser(){
-        return userservice.listUser();
+    @GetMapping("/listUser")
+    public ModelAndView listUser(){
+        ModelAndView model = new ModelAndView("user/list");
+        model.addObject("userList",userservice.listUser());
+        return model;
     }
 
-    @RequestMapping("/listUserByname")
+    @RequestMapping("/listUserById")
     @ResponseBody
-    public List<User> listUserByname(String name){
-        return userservice.findByName(name);
+    public List<User> listUserById(String id){
+        return userservice.findByName(id);
     }
 
 

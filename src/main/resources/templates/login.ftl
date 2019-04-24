@@ -31,7 +31,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
         <div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
         <div class="login-social-link">
-
+            <a href="index.html" class="facebook">
+                Facebook
+            </a>
+            <a href="index.html" class="twitter">
+                Twitter
+            </a>
         </div>
         <ul class="new">
             <li class="new_left"><p><a href="#">Forgot Password ?</a></p></li>

@@ -19,26 +19,12 @@
 
     <!-- 根据id获取用户信息 -->
     <select id="selectById" resultType="user" parameterType="long">
-        SELECT
-        *
-        FROM
-        user
-        WHERE
-        id=#{id}
+        SELECT * FROM user WHERE id=#{id}
     </select>
 
     <insert id="insertUser" parameterType="com.example.demo.entity.User"
             keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO user
-        (
-        id,userName,password,authority
-        )
-        VALUES (
-        #{id},
-        #{userName},
-        #{password},
-        #{authority}
-        )
+        INSERT INTO user(id,userName,password,authority) VALUES (#{id},#{userName},#{password},#{authority})
     </insert>
 
     <delete id="delete" parameterType="long">
@@ -47,13 +33,7 @@
 
     <!-- 修改用户信息 -->
     <update id="update" parameterType="com.example.demo.entity.User">
-        UPDATE
-        user
-        SET
-        user.password=#{password}
-        user.authority=#{authority}
-        WHERE
-        user.id=#{id}
+        UPDATE user SET user.password=#{password} user.authority=#{authority} WHERE user.id=#{id}
     </update>
 
 </mapper>

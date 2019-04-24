@@ -1,23 +1,21 @@
-#配置mysql连接
+server:
+  address: 127.0.0.1
+  port: 8081
+#配置mysql连接 可能需要配置时区 看一下情况吧
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.112.22.1:3306/zzjdb?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.112.22.1:3306/zzjdb?serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
     username: zhoux
     password: 123456
-  #配置mybatis
-  mybatis:
+
+#配置mybatis 他不在spring下面 这样才对啊
+mybatis:
     #配置xml映射路径
     mapper-locations: classpath:mapper/*.xml
     #配置实体类的别名
     type-aliases-package: com.example.demo.entity
     configuration:
     #开启驼峰命名法
-    map-underscore-to-camel-case: true
+      map-underscore-to-camel-case: true
 
-  freemarker:
-    template-loader-path: classpath:/templates/
-
-#  security:
-#    basic:
-#      enabled: false
