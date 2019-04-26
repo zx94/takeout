@@ -1,7 +1,7 @@
 server:
   address: 127.0.0.1
   port: 8081
-#配置mysql连接 可能需要配置时区 看一下情况吧
+#配置mysql连接
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,7 +9,10 @@ spring:
     username: zhoux
     password: 123456
 
-#配置mybatis 他不在spring下面 这样才对啊
+  mvc:
+    static-path-pattern: /static/**
+
+#配置mybatis
 mybatis:
     #配置xml映射路径
     mapper-locations: classpath:mapper/*.xml

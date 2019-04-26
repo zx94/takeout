@@ -1,486 +1,351 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html class="no-js h-100" lang="en">
 <head>
-    <title>Basic_tables</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <!----webfonts--->
-    <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-    <!---//webfonts--->
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Shards Dashboard Lite - Free Bootstrap Admin Template – DesignRevision</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/static/styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="/static/styles/extras.1.1.0.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
-<body>
-<div id="wrapper">
-    <!-- Navigation -->
-    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Modern</a>
+<body class="h-100">
+<div class="color-switcher animated">
+    <h5>Accent Color</h5>
+    <ul class="accent-colors">
+        <li class="accent-primary active" data-color="primary">
+            <i class="material-icons">check</i>
+        </li>
+        <li class="accent-secondary" data-color="secondary">
+            <i class="material-icons">check</i>
+        </li>
+        <li class="accent-success" data-color="success">
+            <i class="material-icons">check</i>
+        </li>
+        <li class="accent-info" data-color="info">
+            <i class="material-icons">check</i>
+        </li>
+        <li class="accent-warning" data-color="warning">
+            <i class="material-icons">check</i>
+        </li>
+        <li class="accent-danger" data-color="danger">
+            <i class="material-icons">check</i>
+        </li>
+    </ul>
+    <div class="actions mb-4">
+        <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="#">
+            <i class="material-icons">cloud</i> Download</a>
+        <a class="mb-2 btn btn-sm btn-white w-100 d-table mx-auto extra-action" href="#">
+            <i class="material-icons">book</i> Documentation</a>
+    </div>
+    <div class="social-wrapper">
+        <div class="social-actions">
+            <h5 class="my-2">Help us Grow</h5>
+            <div class="inner-wrapper">
+                <a class="github-button" href="#" data-icon="octicon-star" data-show-count="true" aria-label="Star DesignRevision/shards-dashboard on GitHub">Star</a>
+                <!-- <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe> -->
+            </div>
         </div>
-        <!-- /.navbar-header -->
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge">4</span></a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-menu-header">
-                        <strong>Messages</strong>
-                        <div class="progress thin">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                <span class="sr-only">40% Complete (success)</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/1.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                            <span class="label label-info">NEW</span>
-                        </a>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/2.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                            <span class="label label-info">NEW</span>
-                        </a>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/3.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                        </a>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/4.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                        </a>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/5.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                        </a>
-                    </li>
-                    <li class="avatar">
-                        <a href="#">
-                            <img src="images/pic1.png" alt=""/>
-                            <div>New message</div>
-                            <small>1 minute ago</small>
-                        </a>
-                    </li>
-                    <li class="dropdown-menu-footer text-center">
-                        <a href="#">View all messages</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"><img src="images/1.png" alt=""/><span class="badge">9</span></a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-menu-header text-center">
-                        <strong>Account</strong>
-                    </li>
-                    <li class="m_2"><a href="#"><i class="fa fa-bell-o"></i> Updates <span class="label label-info">42</span></a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-envelope-o"></i> Messages <span class="label label-success">42</span></a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-tasks"></i> Tasks <span class="label label-danger">42</span></a></li>
-                    <li><a href="#"><i class="fa fa-comments"></i> Comments <span class="label label-warning">42</span></a></li>
-                    <li class="dropdown-menu-header text-center">
-                        <strong>Settings</strong>
-                    </li>
-                    <li class="m_2"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-wrench"></i> Settings</a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-usd"></i> Payments <span class="label label-default">42</span></a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-file"></i> Projects <span class="label label-primary">42</span></a></li>
-                    <li class="divider"></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-shield"></i> Lock Profile</a></li>
-                    <li class="m_2"><a href="#"><i class="fa fa-lock"></i> Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}">
-        </form>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-laptop nav_icon"></i>Layouts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="grids.html">Grid System</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-indent nav_icon"></i>Menu Levels<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="graphs.html">Graphs</a>
-                            </li>
-                            <li>
-                                <a href="typography.html">Typography</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-envelope nav_icon"></i>Mailbox<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="inbox.html">Inbox</a>
-                            </li>
-                            <li>
-                                <a href="compose.html">Compose email</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="widgets.html"><i class="fa fa-flask nav_icon"></i>Widgets</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Forms<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="forms.html">Basic Forms</a>
-                            </li>
-                            <li>
-                                <a href="validation.html">Validation</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-table nav_icon"></i>Tables<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="basic_tables.html">Basic Tables</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw nav_icon"></i>Css<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="media.html">Media</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-    <div id="page-wrapper">
-        <div class="col-md-12 graphs">
-            <div class="xs">
-                <h3>Basic Tables</h3>
-                <div class="bs-example4" data-example-id="contextual-table">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Column heading</th>
-                            <th>Column heading</th>
-                            <th>Column heading</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">3</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr class="info">
-                            <th scope="row">5</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr class="warning">
-                            <th scope="row">7</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        <tr class="danger">
-                            <th scope="row">9</th>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="panel-body1">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-                    <div class="panel-body no-padding">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr class="warning">
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-                    <div class="panel-heading">
-                        <h2>Warning Table</h2>
-                        <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
-                    </div>
-                    <div class="panel-body no-padding" style="display: block;">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr class="warning">
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="bs-example4" data-example-id="simple-responsive-table">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /.table-responsive -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- /.table-responsive -->
-                </div>
-            </div>
-            <div class="copy_layout">
-                <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-            </div>
+        <div id="social-share" data-url="#" data-text="🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!" data-title="share"></div>
+        <div class="loading-overlay">
+            <div class="spinner"></div>
         </div>
     </div>
-    <!-- /#page-wrapper -->
+    <div class="close">
+        <i class="material-icons">close</i>
+    </div>
 </div>
-<!-- /#wrapper -->
-<!-- Nav CSS -->
-<link href="css/custom.css" rel="stylesheet">
-<!-- Metis Menu Plugin JavaScript -->
-<script src="js/metisMenu.min.js"></script>
-<script src="js/custom.js"></script>
+<div class="color-switcher-toggle animated pulse infinite">
+    <i class="material-icons">settings</i>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+            <div class="main-navbar">
+                <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                    <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                        <div class="d-table m-auto">
+                            <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/static/images/shards-dashboards-logo.svg" alt="Shards Dashboard">
+                            <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
+                        </div>
+                    </a>
+                    <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                        <i class="material-icons">&#xE5C4;</i>
+                    </a>
+                </nav>
+            </div>
+            <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+                <div class="input-group input-group-seamless ml-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+            </form>
+            <div class="nav-wrapper">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">
+                            <i class="material-icons">edit</i>
+                            <span>Blog Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="components-blog-posts.html">
+                            <i class="material-icons">vertical_split</i>
+                            <span>Blog Posts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="add-new-post.html">
+                            <i class="material-icons">note_add</i>
+                            <span>Add New Post</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="form-components.html">
+                            <i class="material-icons">view_module</i>
+                            <span>Forms &amp; Components</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tables.html">
+                            <i class="material-icons">table_chart</i>
+                            <span>Tables</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="user-profile-lite.html">
+                            <i class="material-icons">person</i>
+                            <span>User Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="errors.html">
+                            <i class="material-icons">error</i>
+                            <span>Errors</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+            <div class="main-navbar sticky-top bg-white">
+                <!-- Main Navbar -->
+                <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+                    <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                        <div class="input-group input-group-seamless ml-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                            <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+                    </form>
+                    <ul class="navbar-nav border-left flex-row ">
+                        <li class="nav-item border-right dropdown notifications">
+                            <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-link-icon__wrapper">
+                                    <i class="material-icons">&#xE7F4;</i>
+                                    <span class="badge badge-pill badge-danger">2</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">
+                                    <div class="notification__icon-wrapper">
+                                        <div class="notification__icon">
+                                            <i class="material-icons">&#xE6E1;</i>
+                                        </div>
+                                    </div>
+                                    <div class="notification__content">
+                                        <span class="notification__category">Analytics</span>
+                                        <p>Your website’s active users count increased by
+                                            <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <div class="notification__icon-wrapper">
+                                        <div class="notification__icon">
+                                            <i class="material-icons">&#xE8D1;</i>
+                                        </div>
+                                    </div>
+                                    <div class="notification__content">
+                                        <span class="notification__category">Sales</span>
+                                        <p>Last week your store’s sales count decreased by
+                                            <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <img class="user-avatar rounded-circle mr-2" src="/static/images/avatars/0.jpg" alt="User Avatar">
+                                <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-small">
+                                <a class="dropdown-item" href="user-profile-lite.html">
+                                    <i class="material-icons">&#xE7FD;</i> Profile</a>
+                                <a class="dropdown-item" href="components-blog-posts.html">
+                                    <i class="material-icons">vertical_split</i> Blog Posts</a>
+                                <a class="dropdown-item" href="add-new-post.html">
+                                    <i class="material-icons">note_add</i> Add New Post</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="#">
+                                    <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <nav class="nav">
+                        <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                            <i class="material-icons">&#xE5D2;</i>
+                        </a>
+                    </nav>
+                </nav>
+            </div>
+            <!-- / .main-navbar -->
+            <div class="main-content-container container-fluid px-4">
+                <!-- Page Header -->
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <span class="text-uppercase page-subtitle">Overview</span>
+                        <h3 class="page-title">Data Tables</h3>
+                    </div>
+                </div>
+                <!-- End Page Header -->
+                <button type="button" class="mb-2 btn btn-white mr-2">White</button>
+                <!-- Default Light Table -->
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-small mb-4">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Active Users</h6>
+                            </div>
+                            <div class="card-body p-0 pb-3 text-center">
+                                <table class="table mb-0">
+                                    <thead class="bg-light">
+                                    <tr>
+                                        <th scope="col" class="border-0">Id</th>
+                                        <th scope="col" class="border-0">UserName</th>
+                                        <th scope="col" class="border-0">Authority</th>
+                                        <th scope="col" class="border-0">Password</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <#list userList as item> 
+                                    <#assign x=1/>  
+                                    <tr>
+                                        <td>${x}</td>
+                                        <td><option value="${item.userName?if_exists}">${item.userName?if_exists}</option></td>
+                                        <td><option value="${item.authority?if_exists}">${item.authority?if_exists}</option></td>
+                                        <td><option value="${item.password?if_exists}">${item.password?if_exists}</option></td>
+                                    </tr>
+                                    <#assign x=x+1/>
+                                    </#list> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Default Light Table -->
+                <!-- Default Dark Table -->
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-small overflow-hidden mb-4">
+                            <div class="card-header bg-dark">
+                                <h6 class="m-0 text-white">Inactive Users</h6>
+                            </div>
+                            <div class="card-body p-0 pb-3 bg-dark text-center">
+                                <table class="table table-dark mb-0">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="border-bottom-0">#</th>
+                                        <th scope="col" class="border-bottom-0">First Name</th>
+                                        <th scope="col" class="border-bottom-0">Last Name</th>
+                                        <th scope="col" class="border-bottom-0">Country</th>
+                                        <th scope="col" class="border-bottom-0">City</th>
+                                        <th scope="col" class="border-bottom-0">Phone</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Graham</td>
+                                        <td>Brent</td>
+                                        <td>Benin</td>
+                                        <td>Ripabottoni</td>
+                                        <td>1-512-760-9094</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Clark</td>
+                                        <td>Angela</td>
+                                        <td>Estonia</td>
+                                        <td>Borghetto di Vara</td>
+                                        <td>1-660-850-1647</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Wylie</td>
+                                        <td>Joseph</td>
+                                        <td>Korea, North</td>
+                                        <td>Guelph</td>
+                                        <td>325-4351</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Garth</td>
+                                        <td>Clementine</td>
+                                        <td>Indonesia</td>
+                                        <td>Narcao</td>
+                                        <td>722-8264</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Default Dark Table -->
+            </div>
+            <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+                <span class="copyright ml-auto my-auto mr-2">Copyright © 2018  DesignRevision - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></span>
+            </footer>
+        </main>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+<script src="/static/scripts/extras.1.1.0.min.js"></script>
+<script src="/static/scripts/shards-dashboards.1.1.0.min.js"></script>
 </body>
 </html>
