@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js h-100" lang="en">
+<html class="no-js h-100" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 <!-- End Page Header -->
-                <button type="button" class="mb-2 btn btn-white mr-2">White</button>
+                <button type="button" class="mb-2 btn btn-white mr-2">创建用户</button>
                 <!-- Default Light Table -->
                 <div class="row">
                     <div class="col">
@@ -239,16 +239,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <#list userList as item> 
-                                    <#assign x=1/>  
-                                    <tr>
-                                        <td>${x}</td>
-                                        <td><option value="${item.userName?if_exists}">${item.userName?if_exists}</option></td>
-                                        <td><option value="${item.authority?if_exists}">${item.authority?if_exists}</option></td>
-                                        <td><option value="${item.password?if_exists}">${item.password?if_exists}</option></td>
+                                    <tr th:each="item,iterStat:${userList}">
+                                        <td th:text="${iterStat.count}"></td>
+                                        <td th:text="${item.userName}"></td>
+                                        <td th:text="${item.authority}"></td>
+                                        <td th:text="${item.password}"></td>
                                     </tr>
-                                    <#assign x=x+1/>
-                                    </#list> 
                                     </tbody>
                                 </table>
                             </div>
