@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface UserMapper {
 
-    List<User> findUserByName(String name);
+    User findUserByName(String name);
 
     /**
      * 根据id获取用户信息

@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js h-100" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- 头部 -->
+<div th:include="head :: head"></div>
+  <body class="h-100">
+  <!--设置配色-->
+  <div th:include="head :: setting"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Main Sidebar -->
+        <div th:include="head :: sidebar"></div>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <!-- 上方导航栏 -->
+          <div th:include="head :: navbar"></div>
+          <!-- / .main-navbar -->
+          <div class="error">
+            <div class="error__content">
+              <h2>500</h2>
+              <h3>Something went wrong!</h3>
+              <p>There was a problem on our end. Please try again later.</p>
+              <button type="button" class="btn btn-accent btn-pill">&larr; Go Back</button>
+            </div>
+            <!-- / .error_content -->
+          </div>
+          <!-- / .error -->
+        </main>
+      </div>
+    </div>
+  <div th:include="footer :: js"></div>
+  </body>
+</html>

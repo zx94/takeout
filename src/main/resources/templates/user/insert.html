@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js h-100" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- 头部 -->
+<div th:include="head :: head"></div>
+<body class="h-100">
+<div th:include="head :: setting"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:include="head :: sidebar"></div>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+
+            <!-- 上方导航栏 -->
+            <div th:include="head :: navbar"></div>
+
+            <!-- / .main-navbar -->
+            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <i class="fa fa-check mx-2"></i>
+                <strong>Success!</strong> Your profile has been updated!
+            </div>
+
+            <br><br>
+            <div th:text="${hintMessage}">信息提示!!!!</div>
+            <br>
+            <div th:errors="${user.userName}"></div>
+            <br>
+
+            <div class="main-content-container container-fluid px-4">
+                <!-- Page Header -->
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <span class="text-uppercase page-subtitle">Overview</span>
+                        <h3 class="page-title">User Profile</h3>
+                    </div>
+                </div>
+                <!-- End Page Header -->
+                <!-- Default Light Table -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-small mb-4">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Account Details</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item p-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <form th:action="@{/insert}" th:object="${user}" method="post">
+
+                                                <div class="form-group">
+                                                    <label for="feFirstName">Name</label>
+                                                    <input type="text" class="form-control" id="feFirstName"
+                                                           placeholder="userName" value="userName"></div>
+
+                                                <div class="form-group">
+                                                    <label for="feInputState">Authority</label>
+                                                    <select id="feInputState" class="form-control">
+                                                        <option selected>Seller</option>
+                                                        <option>Purchaser</option>
+                                                        <option>Admin</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group ">
+                                                    <label for="fePassword">Password</label>
+                                                    <input type="password" class="form-control" id="fePassword"
+                                                           placeholder="Password"></div>
+
+                                                <button type="submit" class="btn btn-accent">Update Account</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Default Light Table -->
+            </div>
+            <div th:include="footer :: footer"></div>
+        </main>
+    </div>
+</div>
+<div th:include="footer :: js"></div>
+</body>
+</html>

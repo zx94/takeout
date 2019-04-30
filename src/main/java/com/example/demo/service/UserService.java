@@ -21,7 +21,7 @@ public class UserService {
         return userMapper.listUser();
     }
 
-    public List<User> findByName(String name) {
+    public User findByName(String name) {
         return userMapper.findUserByName(name);
     }
 
