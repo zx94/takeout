@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" class="no-js h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!-- 头部 -->
+<div th:include="head :: head"></div>
+<body class="h-100">
+<div th:include="head :: setting"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:include="head :: sidebar"></div>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+
+            <!-- 上方导航栏 -->
+            <div th:include="head :: navbar"></div>
+
+            <!-- / .main-navbar -->
+            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <i class="fa fa-check mx-2"></i>
+                <strong>请完善以下用户信息</strong>
+            </div>
+
+            <div class="main-content-container container-fluid px-4">
+                <!-- Page Header -->
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <span class="text-uppercase page-subtitle">Overview</span>
+                        <h3 class="page-title">User Profile</h3>
+                    </div>
+                </div>
+                <!-- End Page Header -->
+                <!-- Default Light Table -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-small mb-4">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">编辑用户</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item p-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="/user/edit" method="post" th:action="@{/user/edit}" th:method="post" th:object="${user}">
+                                                <input type="hidden" th:field="*{id}">
+                                                <div class="form-group">
+                                                    <label th:for="userName">用户名</label>
+                                                    <input type="text" th:field="*{userName}" class="form-control" th:placeholder="${user.userName}"></div>
+
+                                                <div class="form-group">
+                                                    <label th:for="authorityName">角色名</label>
+                                                    <select th:field="*{authorityName}" class="form-control">
+                                                        <option th:value="请选择">---请选择---</option>
+                                                        <option  th:selected="${user.authorityName eq auth.value}" th:each="auth:${authorityNames}" th:value="${auth.value}" th:text="${auth.text}"></option>
+<!--                                                        <option th:value="admin" th:text="管理员">管理员</option>-->
+<!--                                                        <option th:value="seller" th:text="卖家">卖家</option>-->
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group ">
+                                                    <label th:for="password">密码</label>
+                                                    <input type="password" class="form-control" th:placeholder="${user.password}" th:field="*{password}" th:value="*{password}"></div>
+
+                                                <button type="submit" class="btn btn-accent">提交</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Default Light Table -->
+            </div>
+            <div th:include="footer :: footer"></div>
+        </main>
+    </div>
+</div>
+<div th:include="footer :: js"></div>
+</body>
+</html>

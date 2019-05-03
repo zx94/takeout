@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js h-100" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" class="no-js h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <!-- 头部 -->
 <div th:include="head :: head"></div>
 <body class="h-100">
@@ -20,14 +20,8 @@
                     <span aria-hidden="true">×</span>
                 </button>
                 <i class="fa fa-check mx-2"></i>
-                <strong>Success!</strong> Your profile has been updated!
+                <strong>请完善以下用户信息</strong>
             </div>
-
-            <br><br>
-            <div th:text="${hintMessage}">信息提示!!!!</div>
-            <br>
-            <div th:errors="${user.userName}"></div>
-            <br>
 
             <div class="main-content-container container-fluid px-4">
                 <!-- Page Header -->
@@ -49,28 +43,26 @@
                                 <li class="list-group-item p-3">
                                     <div class="row">
                                         <div class="col">
-                                            <form th:action="@{/insert}" th:object="${user}" method="post">
+                                            <form action="/user/create" method="post" th:action="@{/user/create}" th:method="post" th:object="${user}">
+                                                <div class="form-group">
+                                                    <label th:for="userName">用户名</label>
+                                                    <input type="text" th:field="*{userName}" class="form-control" placeholder="userName"></div>
 
                                                 <div class="form-group">
-                                                    <label for="feFirstName">Name</label>
-                                                    <input type="text" class="form-control" id="feFirstName"
-                                                           placeholder="userName" value="userName"></div>
-
-                                                <div class="form-group">
-                                                    <label for="feInputState">Authority</label>
-                                                    <select id="feInputState" class="form-control">
-                                                        <option selected>Seller</option>
-                                                        <option>Purchaser</option>
-                                                        <option>Admin</option>
+                                                    <label th:for="authorityName">角色名</label>
+                                                    <select th:field="*{authorityName}" class="form-control">
+                                                        <option th:value="请选择">---请选择---</option>
+                                                        <option th:each="auth:${authorityNames}" th:value="${auth.value}" th:text="${auth.text}"></option>
+<!--                                                        <option th:value="admin" th:text="管理员">管理员</option>-->
+<!--                                                        <option th:value="seller" th:text="卖家">卖家</option>-->
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group ">
-                                                    <label for="fePassword">Password</label>
-                                                    <input type="password" class="form-control" id="fePassword"
-                                                           placeholder="Password"></div>
+                                                    <label th:for="password">密码</label>
+                                                    <input type="password" class="form-control" placeholder="password" th:field="*{password}" th:value="*{password}"></div>
 
-                                                <button type="submit" class="btn btn-accent">Update Account</button>
+                                                <button type="submit" class="btn btn-accent">提交</button>
                                             </form>
                                         </div>
                                     </div>
