@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SellerMapper">
+  <resultMap id="sellerMap" type="com.example.demo.entity.Seller">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="principal_name" jdbcType="VARCHAR" property="principalName" />
+    <result column="principal_mobile" jdbcType="VARCHAR" property="principalMobile" />
+    <result column="start_hours" jdbcType="VARCHAR" property="startHours" />
+    <result column="end_hours" jdbcType="VARCHAR" property="endHours" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="out_image" jdbcType="VARCHAR" property="outImage" />
+    <result column="inner_image" jdbcType="VARCHAR" property="innerImage" />
+    <result column="id_card_front_image" jdbcType="VARCHAR" property="idCardFrontImage" />
+    <result column="id_card_back_image" jdbcType="VARCHAR" property="idCardBackImage" />
+    <result column="business_license" jdbcType="VARCHAR" property="businessLicense" />
+    <result column="industry_license" jdbcType="VARCHAR" property="industryLicense" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="is_valid" jdbcType="BIT" property="isValid" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="been_deleted" jdbcType="BIT" property="beenDeleted" />
+  </resultMap>
+
+  <insert id="create" parameterType="com.example.demo.entity.Seller">
+        insert into seller(id, name, mobile, principal_name,principal_mobile,start_hours,
+        end_hours,province,city,area,address,logo,out_image,inner_image,id_card_front_image,
+        id_card_back_image,business_license,industry_license,state,is_valid,longitude,latitude,
+        description,login_account,password,been_deleted)
+        values (#{id}, #{name}, #{mobile}, #{principal_name},#{principal_mobile},#{start_hours},
+        #{end_hours},#{province},#{city},#{area},#{address},#{logo},#{out_image},#{inner_image},
+        #{id_card_front_image},#{id_card_back_image},#{business_license},#{industry_license},
+        #{industry_license},#{state},#{is_valid},#{longitude},#{latitude},#{description},
+        #{login_account},#{password},#{been_deleted})
+    </insert>
+
+  <update id="update" parameterType="com.example.demo.entity.Seller">
+        update seller
+        set name=#{u.name},
+            mobile=#{u.mobile},
+            principal_name=#{u.principal_name},
+            principal_mobile=#{u.principal_mobile},
+            start_hours=#{u.start_hours},
+            description=#{u.description},
+            end_hours=#{u.end_hours},
+            province=#{u.province},
+            city=#{u.city},
+            area=#{u.area},
+            address=#{u.address},
+            logo=#{u.logo},
+            out_image=#{u.out_image},
+            inner_image=#{u.inner_image},
+            id_card_front_image=#{u.id_card_front_image},
+            id_card_back_image=#{u.id_card_back_image},
+            business_license=#{u.business_license},
+            state=#{u.state},
+            is_valid=#{u.is_valid},
+            longitude=#{u.longitude},
+            latitude=#{u.latitude},
+            description=#{u.description},
+            login_account=#{u.login_account},
+            password=#{u.password},
+            been_deleted=#{u.been_deleted}
+        where id = #{u.id}
+    </update>
+
+  <delete id="delete" parameterType="Long">
+        update seller
+        set  been_deleted=#{been_deleted}
+        where id = #{id}
+    </delete>
+
+  <select id="findAll" resultMap="sellerMap">
+        select *
+        from seller
+        where been_deleted = ture
+    </select>
+
+  <select id="findById" resultMap="sellerMap" parameterType="Long">
+        select *
+        from seller
+        where id = #{id} and been_deleted = ture
+    </select>
+
+  <select id="findByName" resultMap="sellerMap" parameterType="String">
+        select *
+        from seller
+        where name = #{name} and been_deleted = ture
+    </select>
+</mapper>

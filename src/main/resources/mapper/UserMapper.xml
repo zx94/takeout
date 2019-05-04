@@ -34,7 +34,7 @@
     <select id="findByUserName" resultMap="userMap" parameterType="String">
         select *
         from user
-        where id = #{userName}
+        where userName = #{userName}
     </select>
 
 </mapper>

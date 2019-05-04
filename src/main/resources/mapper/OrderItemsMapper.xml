@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.OrderItemsMapper">
+  <resultMap id="orderItemsMap" type="com.example.demo.entity.OrderItems">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_discount" jdbcType="DECIMAL" property="productDiscount" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="been_deleted" jdbcType="BIT" property="beenDeleted" />
+  </resultMap>
+
+  <insert id="create" parameterType="com.example.demo.entity.OrderItems">
+        insert into order_items(id,order_number,order_id,product_name,product_id,
+        product_price,product_discount,description,image,been_deleted)
+        values (#{id}, #{order_number},#{order_id},#{product_name},#{product_id},
+        #{product_price}, #{product_discount},#{description},#{image},#{been_deleted})
+    </insert>
+
+  <update id="update" parameterType="com.example.demo.entity.OrderItems">
+        update order_items
+        set product_name=#{u.product_name},
+            product_id=#{u.product_id},
+            product_price=#{u.product_price},
+            product_discount=#{u.product_discount},
+        where id = #{u.id}
+    </update>
+
+  <delete id="delete" parameterType="Long">
+        update order_items
+        set  been_deleted=#{been_deleted}
+        where id = #{id}
+    </delete>
+
+  <select id="findAll" resultMap="orderItemsMap">
+        select *
+        from order_items
+        where been_deleted = ture
+    </select>
+
+  <select id="findById" resultMap="orderItemsMap" parameterType="Long">
+        select *
+        from order_items
+        where id = #{id} and been_deleted = ture
+    </select>
+
+</mapper>

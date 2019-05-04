@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProductsMapper">
+  <resultMap id="productMap" type="com.example.demo.entity.Product">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="in_stocks" jdbcType="INTEGER" property="inStocks" />
+    <result column="sales_volume" jdbcType="INTEGER" property="salesVolume" />
+    <result column="sales_month_volume" jdbcType="INTEGER" property="salesMonthVolume" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+    <result column="merchant_id" jdbcType="BIGINT" property="merchantId" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="been_deleted" jdbcType="BIT" property="beenDeleted" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="images" jdbcType="LONGVARCHAR" property="images" />
+  </resultMap>
+
+  <insert id="create" parameterType="com.example.demo.entity.Product">
+        insert into products(id, name, price, in_stocks,sales_volume,sales_month_volume,
+        description,state,merchant_name,merchant_id,been_deleted,category_id,category_name,
+        images)
+        values (#{id}, #{name}, #{price}, #{in_stocks},#{sales_volume},#{sales_month_volume},
+        #{description},#{state},#{merchant_name},#{merchant_id},#{category_id},#{category_name},
+        #{images})
+    </insert>
+
+  <update id="update" parameterType="com.example.demo.entity.Product">
+        update products
+        set name=#{u.name},
+            price=#{u.price},
+            in_stocks=#{u.in_stocks},
+            sales_volume=#{u.sales_volume},
+            sales_month_volume=#{u.sales_month_volume},
+            description=#{u.description},
+            state=#{u.state},
+            merchant_name=#{u.merchant_name},
+            merchant_id=#{u.merchant_id},
+            category_id=#{u.category_id},
+            category_name=#{u.category_name},
+            images=#{u.images}
+        where id = #{u.id}
+    </update>
+
+  <delete id="delete" parameterType="Long">
+        update products
+        set  been_deleted=#{been_deleted}
+        where id = #{id}
+    </delete>
+
+  <select id="findAll" resultMap="productMap">
+        select *
+        from products
+        where been_deleted = ture
+    </select>
+
+  <select id="findById" resultMap="productMap" parameterType="Long">
+        select *
+        from products
+        where id = #{id} and been_deleted = ture
+    </select>
+
+  <select id="findByName" resultMap="productMap" parameterType="String">
+        select *
+        from products
+        where name = #{name} and been_deleted = ture
+    </select>
+
+</mapper>
