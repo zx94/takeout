@@ -1,43 +1,66 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-    <meta charset="UTF-8">
-    <title>登录</title>
-</head>
-<body style="padding-top: 200px;width: 100%;height: 100%;
--webkit-background-size: 100%;background-size: 100%;" th:background="@{/img/register.jpg}">
-    <div class="container-fluid">
-        <div class="row body">
-            <div class="col-xs-2 col-md-2"></div>
-            <div class="col-xs-8 col-md-8">
-                <form class="form-signin" method="post" th:action="@{/authentication/form}" style="padding: 0px 500px 0 500px;">
-                    <h2 class="form-signin-heading">商户登录</h2>
-                    <label for="inputMobile" class="sr-only">手机号码</label>
-                    <input style="margin-bottom: 10px;"
-                           type="mobile" id="inputMobile" class="form-control" name="username"
-                           placeholder="手机号码" required="" autofocus="">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-                    <label for="inputPassword" class="sr-only">密码</label>
-                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required="">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="remember-me"> 记住我
-                        </label>
-                    </div>
-                    <button class="btn btn-primary btn-block" type="submit">登录</button>
-                    <a class="btn btn-info btn-block" href="/register" style="color: #ffffff;">没有账户？去注册一个</a>
-                </form>
-            </div>
-            <div class="col-xs-2 col-md-2"></div>
-        </div>
-        <!--<div th:replace="/common/footer::footer"></div>-->
-    </div>
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script th:src="@{/js/login.js}"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Flat Login Form 3.0</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="/static/css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<!-- Form Mixin-->
+<!-- Input Mixin-->
+<!-- Button Mixin-->
+<!-- Pen Title-->
+<div class="pen-title">
+  <h1>Flat Login Form</h1><span>Pen <i class='fa fa-paint-brush'></i> + <i class='fa fa-code'></i> by <a href=''>Andy Tran</a></span>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    <div class="tooltip">Click Me</div>
+  </div>
+  <div class="form">
+    <h2>登录你的账号</h2>
+    <p style="color:#FF0000;fontSize:10px;" th:text="${hintMessage}"></p>
+    <form action="/login" th:object="${user}" th:method="Post">
+      <input type="text" th:field="*{userName}" th:placeholder="UserName"/>
+      <input type="password" th:field="*{password}" th:placeholder="Password"/>
+      <button>登录</button>
+    </form>
+  </div>
+  <div class="form">
+    <h2>创建账号</h2>
+    <form>
+      <input type="text" placeholder="Username"/>
+      <input type="password" placeholder="Password"/>
+      <input type="email" placeholder="Email Address"/>
+      <input type="tel" placeholder="Phone Number"/>
+      <button>注册</button>
+    </form>
+  </div>
+  <div class="cta"><a href="">Forgot your password?</a></div>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://codepen.io/andytran/pen/vLmRVp.js'></script>
+
+  
+
+    <script  src="/static/js/index.js"></script>
+
+
+
+
 </body>
+
 </html>

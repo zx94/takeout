@@ -38,4 +38,5 @@ public class UserService {
     public User getByUserName(String userName) {
         return mapper.findByUserName(userName);
     }
+
 }

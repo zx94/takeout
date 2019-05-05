@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //获取Session中的user_session的对象 如果有值，说明已登录，否则重定向到登陆页
         final Object obj = request.getSession().getAttribute(USER_SESSION_KEY);
         if (null != obj) return true;
-        response.sendRedirect("/user/login");
+        response.sendRedirect("/login");
         return false;
     }
 }
