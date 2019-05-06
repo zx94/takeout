@@ -5,20 +5,22 @@
 <mapper namespace="com.example.demo.mapper.UserMapper">
     <resultMap id="userMap" type="com.example.demo.entity.User">
         <result property="id" column="id"/>
-        <result property="userName" column="userName"/>
-        <result property="authorityName" column="authorityName"/>
+        <result property="userName" column="user_name"/>
+        <result property="authorityName" column="authority_name"/>
         <result property="password" column="password"/>
+        <result property="isValid" column="is_valid"/>
     </resultMap>
 
     <insert id="create" parameterType="com.example.demo.entity.User">
-        insert into user(id, username, authorityName, password)
-        values (#{id}, #{userName}, #{authorityName}, #{password})
+        insert into user(id, user_name, authority_name, password,is_valid)
+        values (#{id}, #{user_name}, #{authority_name}, #{password},#{is_valid})
     </insert>
     <update id="update" parameterType="com.example.demo.entity.User">
         update user
-        set userName=#{u.userName},
-            authorityName=#{u.authorityName},
-            password=#{u.password}
+        set user_name=#{u.user_name},
+            authority_name=#{u.authority_name},
+            password=#{u.password},
+            is_valid=#{u.is_valid}
         where id = #{u.id}
     </update>
     <delete id="delete" parameterType="Long">
@@ -34,7 +36,7 @@
     <select id="findByUserName" resultMap="userMap" parameterType="String">
         select *
         from user
-        where userName = #{userName}
+        where user_name = #{user_name}
     </select>
 
 </mapper>

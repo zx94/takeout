@@ -6,11 +6,13 @@ create table `user`(
     `is_valid` tinyint(1) DEFAULT NULL COMMENT '是否有效',
 )engine = InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `user` VALUES ('1', 'admin', 'Admin', '123456', '1');
+
 /**
   商户信息表
  */
 CREATE TABLE `seller` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `name` varchar(30) DEFAULT NULL COMMENT '商户名称',
   `mobile` varchar(16) DEFAULT NULL COMMENT '联系电话',
   `principal_name` varchar(50) DEFAULT NULL COMMENT '负责人',
@@ -45,7 +47,7 @@ CREATE TABLE `seller` (
   会员信息表
  */
 CREATE TABLE `member` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `member_name` varchar(30) DEFAULT NULL COMMENT '会员名称(登陆名称)',
   `mobile` varchar(16) DEFAULT NULL COMMENT '联系电话',
   `name` varchar(50) DEFAULT NULL COMMENT '真实名称(预留)',
@@ -66,7 +68,7 @@ CREATE TABLE `member` (
   商品信息表
 */
 CREATE TABLE `products` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `name` varchar(30) DEFAULT NULL COMMENT '商品名称',
   `price` decimal(10,2) DEFAULT NULL COMMENT '商品价格',
   `images` text COMMENT '商品图片',
@@ -88,7 +90,7 @@ CREATE TABLE `products` (
 
 
 CREATE TABLE `product_category` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `name` varchar(30) DEFAULT NULL COMMENT '类别名称',
   `images` text COMMENT '分类图片',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
@@ -103,7 +105,7 @@ CREATE TABLE `product_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品分类表';
 
 CREATE TABLE `order` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `order_number` varchar(30) DEFAULT NULL COMMENT '订单号',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   `order_state` int(1) DEFAULT NULL COMMENT '订单状态（-1：已取消, 0：未支付，1：已支付；2：已接单，3: 配送中，4: 已完成）',
@@ -131,7 +133,7 @@ CREATE TABLE `order` (
 
 
 CREATE TABLE `order_items` (
-  `id` bigint(20) NOT NULL PRIMARY KEY COMMENT '主键id',
+  `id` bigint(20) NOT NULL COMMENT '主键id',
   `order_number` varchar(30) DEFAULT NULL COMMENT '订单号',
   `order_id` bigint(20) DEFAULT NULL COMMENT '订单id',
   `product_name` varchar(30) DEFAULT NULL COMMENT '商品名称',

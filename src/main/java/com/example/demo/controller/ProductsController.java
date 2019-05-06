@@ -19,7 +19,7 @@ public class ProductsController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        model.addAttribute("users", service.getAllProducts());
+        model.addAttribute("products", service.getAllProducts());
         return "product/list";
     }
 
