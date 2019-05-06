@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.AuthorityEnum;
+import com.example.demo.entity.Member;
+import com.example.demo.entity.Seller;
 import com.example.demo.entity.User;
 import com.example.demo.helper.SnowflakeIdWorker;
 import com.example.demo.mapper.UserMapper;
@@ -17,9 +20,26 @@ public class UserService {
     private UserMapper mapper;
     @Autowired
     private SnowflakeIdWorker idWorker;
+    @Autowired
+    private SellerService sellerService;
+    @Autowired
+    private MemberService memberService;
 
     public void createUser(User u) {
         u.setId(idWorker.nextId());
+
+        if(u.getAuthorityName()== AuthorityEnum.Seller.getValue()){
+            Seller seller=new Seller();
+            seller.setLoginAccount(u.getUserName());
+            sellerService.createSeller(seller);
+        }
+
+        if(u.getAuthorityName()== AuthorityEnum.Member.getValue()){
+            Member member=new Member();
+            member.setName(u.getUserName());
+            memberService.createMember(member);
+        }
+
         mapper.create(u);
     }
     public void updateUser(Long id,User u){
