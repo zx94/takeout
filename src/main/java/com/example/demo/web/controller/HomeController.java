@@ -58,8 +58,10 @@ public class HomeController {
         //登陆验证
         User data_user = userService.getByUserName(user.getUserName());
 
-        String a=user.getUserName();
-        String b=data_user.getUserName();
+        if(data_user==null){
+            model.addAttribute("hintMessage","用户不存在！");
+            return "login";
+        }
 
         if(null==user.getPassword()||user.getPassword().isEmpty()){
             model.addAttribute("hintMessage","密码不能为空！");
@@ -71,13 +73,60 @@ public class HomeController {
                 return "redirect:/welcome";
             }
             else {
-                model.addAttribute("hintMessage","密码错误！请重新输入！");
+                model.addAttribute("hintMessage","账户或密码错误！请重新输入！");
                 return "login";
             }
         } else {
             model.addAttribute("hintMessage","用户名不能为空！");
             return "login";
         }
+    }
+
+    @GetMapping(value = "/register")
+    public String register(HttpSession session,Model model) {
+        final User user = (User) session.getAttribute(USER_SESSION_KEY);
+        //如果session存在，跳转到后台首页
+        if (null != user) {
+            model.addAttribute("user",user);
+            return "redirect:/welcome";
+        }
+
+        model.addAttribute("user",new User());
+        return "login";
+    }
+
+    /**
+     * 注册 POST请求
+     *
+     */
+    @PostMapping(value = "/register")
+    public String getRegister(@ModelAttribute User user, HttpSession session, Model model) {
+        //注册验证
+        if (null == user.getUserName()||user.getUserName().isEmpty()) {
+            model.addAttribute("hintMessage","用户名不能为空！");
+            return "login";
+        }
+        if (null==user.getPassword()||user.getPassword().isEmpty()) {
+            model.addAttribute("hintMessage","密码不能为空！");
+            return "login";
+        }
+        User data_user = userService.getByUserName(user.getUserName());
+        if(null!=data_user){
+            model.addAttribute("hintMessage","用户名已存在！");
+            return "login";
+        }
+        if(user.getPassword().length()<6||user.getPassword().length()>22){
+            model.addAttribute("hintMessage","密码应在6-22位之间！");
+            return "login";
+        }
+
+        userService.createUser(user);
+
+        data_user= userService.getByUserName(user.getUserName());
+
+        session.setAttribute(USER_SESSION_KEY, data_user);
+
+        return "redirect:/welcome";
     }
 
     /**
