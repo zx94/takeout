@@ -58,10 +58,6 @@ public class Member {
     @Column(name = "is_valid")
     private Boolean isValid;
 
-    /**
-     * 密码
-     */
-    private String password;
 
     /**
      * 数据入库时间

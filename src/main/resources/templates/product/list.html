@@ -27,7 +27,7 @@
                 <!-- End Page Header -->
                 <a href="/user/create" th:href="@{/user/create}">
                     <button type="button" class="mb-2 btn btn-white mr-2">
-                        创建用户
+                        创建产品
                     </button>
                 </a>
                 <!-- Default Light Table -->
@@ -35,7 +35,7 @@
                     <div class="col">
                         <div class="card card-small mb-4">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">激活的用户</h6>
+                                <h6 class="m-0">Active Users</h6>
                             </div>
                             <div class="card-body p-0 pb-3 text-center">
                                 <table class="table mb-0">
@@ -44,6 +44,7 @@
                                         <th scope="col" class="border-0">序号</th>
                                         <th scope="col" class="border-0">UserName</th>
                                         <th scope="col" class="border-0">Authority</th>
+                                        <th scope="col" class="border-0">Password</th>
                                         <th scope="col" class="border-0"> </th>
                                     </tr>
                                     </thead>
@@ -55,11 +56,11 @@
                                         <td th:text="${u.password}"></td>
                                         <td>
                                             <a th:href="@{'/user/edit/'+${u.id}}">
-                                            <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
+                                                <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
                                             </a>
                                             |
                                             <a th:href="@{'/user/delete/'+${u.id}}">
-                                            <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
+                                                <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
                                             </a>
                                         </td>
                                     </tr>
@@ -75,7 +76,7 @@
                     <div class="col">
                         <div class="card card-small overflow-hidden mb-4">
                             <div class="card-header bg-dark">
-                                <h6 class="m-0 text-white">未激活的用户</h6>
+                                <h6 class="m-0 text-white">Inactive Users</h6>
                             </div>
                             <div class="card-body p-0 pb-3 bg-dark text-center">
                                 <table class="table table-dark mb-0">

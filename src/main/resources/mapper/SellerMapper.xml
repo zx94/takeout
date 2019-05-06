@@ -29,7 +29,6 @@
     <result column="latitude" jdbcType="DOUBLE" property="latitude" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
@@ -40,12 +39,12 @@
         insert into seller(id, name, mobile, principal_name,principal_mobile,start_hours,
         end_hours,province,city,area,address,logo,out_image,inner_image,id_card_front_image,
         id_card_back_image,business_license,industry_license,state,is_valid,longitude,latitude,
-        description,login_account,password,been_deleted)
+        description,login_account,been_deleted)
         values (#{id}, #{name}, #{mobile}, #{principal_name},#{principal_mobile},#{start_hours},
         #{end_hours},#{province},#{city},#{area},#{address},#{logo},#{out_image},#{inner_image},
         #{id_card_front_image},#{id_card_back_image},#{business_license},#{industry_license},
         #{industry_license},#{state},#{is_valid},#{longitude},#{latitude},#{description},
-        #{login_account},#{password},#{been_deleted})
+        #{login_account},#{been_deleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Seller">
@@ -73,7 +72,6 @@
             latitude=#{u.latitude},
             description=#{u.description},
             login_account=#{u.login_account},
-            password=#{u.password},
             been_deleted=#{u.been_deleted}
         where id = #{u.id}
     </update>

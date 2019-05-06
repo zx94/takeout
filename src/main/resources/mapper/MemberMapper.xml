@@ -13,7 +13,6 @@
     <result column="id_card_front_image" jdbcType="VARCHAR" property="idCardFrontImage" />
     <result column="id_card_back_image" jdbcType="VARCHAR" property="idCardBackImage" />
     <result column="is_valid" jdbcType="BIT" property="isValid" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
@@ -24,9 +23,9 @@
 
   <insert id="create" parameterType="com.example.demo.entity.Member">
         insert into member(id, member_name, mobile, name,avatar,id_card_front_image,
-        id_card_back_image,is_valid,password,been_deleted)
+        id_card_back_image,is_valid,been_deleted)
         values (#{id}, #{member_name}, #{mobile}, #{name},#{avatar},#{id_card_front_image},
-        #{id_card_back_image},#{is_valid},#{password},#{been_deleted})
+        #{id_card_back_image},#{is_valid},#{been_deleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Member">
@@ -38,7 +37,6 @@
             id_card_front_image=#{u.id_card_front_image},
             id_card_back_image=#{u.id_card_back_image},
             is_valid=#{u.is_valid},
-            password=#{u.password},
             been_deleted=#{u.been_deleted}
         where id = #{u.id}
     </update>

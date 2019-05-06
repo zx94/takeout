@@ -144,11 +144,6 @@ public class Seller {
     private String loginAccount;
 
     /**
-     * 密码
-     */
-    private String password;
-
-    /**
      * 数据入库时间
      */
     @Column(name = "insert_time")
