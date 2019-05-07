@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProductCategoryMapper">
+  <resultMap id="productToCategoryMap" type="com.example.demo.entity.ProductToCategory">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="product_id" jdbcType="BIGINT" property="productId" />
+
+    <id column="category_id" jdbcType="BIGINT" property="categoryId" />
+  </resultMap>
+
+  <insert id="create" parameterType="com.example.demo.entity.ProductCategory">
+        insert into product_to_category(id, name, description,state,
+        merchant_name,merchant_id,been_deleted,images)
+        values (#{id}, #{name},#{description},#{state},
+        #{merchant_name},#{merchant_id},#{images})
+    </insert>
+
+  <update id="update" parameterType="com.example.demo.entity.ProductCategory">
+        update product_category
+        set name=#{u.name},
+            description=#{u.description},
+            state=#{u.state},
+            merchant_name=#{u.merchant_name},
+            merchant_id=#{u.merchant_id},
+            images=#{u.images}
+        where id = #{u.id}
+    </update>
+
+  <delete id="delete" parameterType="Long">
+        update product_category
+        set  been_deleted=#{been_deleted}
+        where id = #{id}
+    </delete>
+
+  <select id="findAll" resultMap="productCategoryMap">
+        select *
+        from product_category
+        where been_deleted = ture
+    </select>
+
+  <select id="findById" resultMap="productCategoryMap" parameterType="Long">
+        select *
+        from product_category
+        where id = #{id} and been_deleted = ture
+    </select>
+
+  <select id="findByName" resultMap="productCategoryMap" parameterType="String">
+        select *
+        from product_category
+        where name = #{name} and been_deleted = ture
+    </select>
+</mapper>
