@@ -14,4 +14,8 @@ public interface ProductsMapper{
     List<Product> findAll();
     Product findById(Long id);
     List<Product> findByName(String name);
+
+    void insertToCategory(Long productId, List<Long> categoryIds);
+
+    List<Product> findAllByCategory(List<Long> categoryIds);
 }

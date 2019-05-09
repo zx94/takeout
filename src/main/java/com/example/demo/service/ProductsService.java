@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Product;
+import com.example.demo.entity.ProductToCategory;
 import com.example.demo.helper.SnowflakeIdWorker;
+import com.example.demo.mapper.ProductToCategoryMapper;
 import com.example.demo.mapper.ProductsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,15 @@ public class ProductsService{
 
     @Autowired
     private ProductsMapper mapper;
+
     @Autowired
     private SnowflakeIdWorker idWorker;
 
-    public void createProduct(Product u) {
+    public void createProduct(Product u,List<Long> categoryIds) {
         u.setId(idWorker.nextId());
         mapper.create(u);
+
+        mapper.insertToCategory(u.getId(),categoryIds);
     }
     public void updateProduct(Long id,Product u){
         mapper.update(id,u);

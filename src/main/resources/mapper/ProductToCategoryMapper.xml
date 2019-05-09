@@ -10,45 +10,26 @@
     <id column="category_id" jdbcType="BIGINT" property="categoryId" />
   </resultMap>
 
-  <insert id="create" parameterType="com.example.demo.entity.ProductCategory">
-        insert into product_to_category(id, name, description,state,
-        merchant_name,merchant_id,been_deleted,images)
-        values (#{id}, #{name},#{description},#{state},
-        #{merchant_name},#{merchant_id},#{images})
+  <insert id="create" parameterType="Long">
+        insert into product_to_category(product_id,category_id)
+        values (#{productId}, #{categoryId})
     </insert>
 
-  <update id="update" parameterType="com.example.demo.entity.ProductCategory">
-        update product_category
-        set name=#{u.name},
-            description=#{u.description},
-            state=#{u.state},
-            merchant_name=#{u.merchant_name},
-            merchant_id=#{u.merchant_id},
-            images=#{u.images}
-        where id = #{u.id}
-    </update>
-
   <delete id="delete" parameterType="Long">
-        update product_category
-        set  been_deleted=#{been_deleted}
-        where id = #{id}
+        delete
+        from product_to_category
+        where product_id = #{productId} and category_id=#{categoryId}
     </delete>
 
-  <select id="findAll" resultMap="productCategoryMap">
+  <select id="findAllByProductId" resultMap="productToCategoryMap" parameterType="Long">
         select *
-        from product_category
-        where been_deleted = ture
+        from product_to_category
+        where product_id = #{productId}
     </select>
 
-  <select id="findById" resultMap="productCategoryMap" parameterType="Long">
+  <select id="findAllByCategoryId" resultMap="productToCategoryMap" parameterType="Long">
         select *
-        from product_category
-        where id = #{id} and been_deleted = ture
-    </select>
-
-  <select id="findByName" resultMap="productCategoryMap" parameterType="String">
-        select *
-        from product_category
-        where name = #{name} and been_deleted = ture
+        from product_to_category
+        where category_id=#{categoryId}
     </select>
 </mapper>

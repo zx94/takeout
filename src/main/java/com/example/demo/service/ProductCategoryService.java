@@ -20,9 +20,10 @@ public class ProductCategoryService{
     @Autowired
     private SnowflakeIdWorker idWorker;
 
-    public void createProductCategory(ProductCategory u) {
+    public void createProductCategory(ProductCategory u,List<Long> productIds) {
         u.setId(idWorker.nextId());
         mapper.create(u);
+        mapper.insertToProduct(u.getId(),productIds);
     }
     public void updateProductCategory(Long id,ProductCategory u){
         mapper.update(id,u);

@@ -35,21 +35,21 @@
         merchant_name,merchant_id,member_name,member_mobile,distribute_price,discount,
         pack_price,total_amount,distributer_name,distributer_id,distributer_mobile,
         distribution_name,distribution_id,been_deleted)
-        values (#{id}, #{order_number},#{description},#{order_state},#{distribute_address},
-        #{merchant_name}, #{merchant_id},#{member_name},#{member_mobile},#{distribute_price},
-        #{discount}, #{pack_price},#{total_amount},#{distributer_name},#{distributer_id},
-        #{distributer_mobile}, #{distribution_name},#{distribution_id},#{been_deleted})
+        values (#{id}, #{orderNumber},#{description},#{order_state},#{distributeAddress},
+        #{merchantName}, #{merchantId},#{memberName},#{memberMobile},#{distributePrice},
+        #{discount}, #{packPrice},#{totalAmount},#{distributerName},#{distributerId},
+        #{distributerMobile}, #{distributionName},#{distributionId},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Order">
         update order
-        set order_state=#{u.order_state},
+        set order_state=#{u.orderState},
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
         update order
-        set  been_deleted=#{been_deleted}
+        set  been_deleted=#{beenDeleted}
         where id = #{id}
     </delete>
 

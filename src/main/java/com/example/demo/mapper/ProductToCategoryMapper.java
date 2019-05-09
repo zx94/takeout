@@ -7,9 +7,9 @@ import java.util.List;
 
 @Component
 public interface ProductToCategoryMapper {
-    void create(ProductToCategory pc);
+    void create(Long productId,Long categoryId);
+
     void delete(Long productId,Long categoryId);
-    void update(Long productId,Long categoryId);
 
     List<ProductToCategory> findAllByProductId(Long productId);
 

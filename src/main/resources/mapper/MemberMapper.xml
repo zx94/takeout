@@ -24,26 +24,26 @@
   <insert id="create" parameterType="com.example.demo.entity.Member">
         insert into member(id, member_name, mobile, name,avatar,id_card_front_image,
         id_card_back_image,is_valid,been_deleted)
-        values (#{id}, #{member_name}, #{mobile}, #{name},#{avatar},#{id_card_front_image},
-        #{id_card_back_image},#{is_valid},#{been_deleted})
+        values (#{id}, #{memberName}, #{mobile}, #{name},#{avatar},#{idCardFrontImage},
+        #{idCardBackImage},#{isValid},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Member">
         update member
-        set member_name=#{u.member_name},
+        set member_name=#{u.memberName},
             mobile=#{u.mobile},
             name=#{u.name},
             avatar=#{u.avatar},
-            id_card_front_image=#{u.id_card_front_image},
-            id_card_back_image=#{u.id_card_back_image},
+            id_card_front_image=#{u.idCardFrontImage},
+            id_card_back_image=#{u.idCardBackImage},
             is_valid=#{u.is_valid},
-            been_deleted=#{u.been_deleted}
+            been_deleted=#{u.beenDeleted}
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
         update member
-        set  been_deleted=#{been_deleted}
+        set  been_deleted=#{beenDeleted}
         where id = #{id}
     </delete>
 

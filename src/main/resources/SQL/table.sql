@@ -1,9 +1,9 @@
 create table `user`(
     `id` bigint NOT NULL PRIMARY KEY ,
-    `user_name` varchar(50) COMMENT '用户名',
-    `authority_name` varchar(10) COMMENT '权限',
-    `password` varchar(22) COMMENT '密码',
-    `is_valid` tinyint(1) DEFAULT NULL COMMENT '是否有效',
+    `user_name` varchar(50) DEFAULT NULL COMMENT '用户名',
+    `authority_name` varchar(10) DEFAULT NULL COMMENT '权限',
+    `password` varchar(22) DEFAULT NULL COMMENT '密码',
+    `is_valid` tinyint(1) DEFAULT false COMMENT '是否有效',
 )engine = InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` VALUES ('1', 'admin', 'Admin', '123456', '1');
@@ -148,3 +148,10 @@ CREATE TABLE `order_items` (
   `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单详细信息表';
+
+CREATE TABLE `product_to_category`
+(
+    `product_id` bigint(20) NOT NULL COMMENT '产品id',
+    `category_id` bigint(20) NOT NULL COMMENT '种类id',
+    PRIMARY KEY(product_id,category_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品种类中间表';

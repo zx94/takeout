@@ -23,22 +23,22 @@
   <insert id="create" parameterType="com.example.demo.entity.OrderItems">
         insert into order_items(id,order_number,order_id,product_name,product_id,
         product_price,product_discount,description,image,been_deleted)
-        values (#{id}, #{order_number},#{order_id},#{product_name},#{product_id},
-        #{product_price}, #{product_discount},#{description},#{image},#{been_deleted})
+        values (#{id}, #{orderNumber},#{orderId},#{productName},#{productId},
+        #{productPrice}, #{productDiscount},#{description},#{image},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.OrderItems">
         update order_items
-        set product_name=#{u.product_name},
-            product_id=#{u.product_id},
-            product_price=#{u.product_price},
-            product_discount=#{u.product_discount},
+        set product_name=#{u.productName},
+            product_id=#{u.productId},
+            product_price=#{u.productPrice},
+            product_discount=#{u.productDiscount},
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
         update order_items
-        set  been_deleted=#{been_deleted}
+        set  been_deleted=#{beenDeleted}
         where id = #{id}
     </delete>
 

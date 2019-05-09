@@ -28,8 +28,8 @@
         insert into products(id, name, price, in_stocks,sales_volume,sales_month_volume,
         description,state,merchant_name,merchant_id,been_deleted,category_id,category_name,
         images)
-        values (#{id}, #{name}, #{price}, #{in_stocks},#{sales_volume},#{sales_month_volume},
-        #{description},#{state},#{merchant_name},#{merchant_id},#{category_id},#{category_name},
+        values (#{id}, #{name}, #{price}, #{in_stocks},#{salesVolume},#{salesMonthVolume},
+        #{description},#{state},#{merchantName},#{merchantId},#{categoryId},#{categoryName},
         #{images})
     </insert>
 
@@ -37,22 +37,22 @@
         update products
         set name=#{u.name},
             price=#{u.price},
-            in_stocks=#{u.in_stocks},
-            sales_volume=#{u.sales_volume},
-            sales_month_volume=#{u.sales_month_volume},
+            in_stocks=#{u.inStocks},
+            sales_volume=#{u.salesVolume},
+            sales_month_volume=#{u.salesMonthVolume},
             description=#{u.description},
             state=#{u.state},
-            merchant_name=#{u.merchant_name},
-            merchant_id=#{u.merchant_id},
-            category_id=#{u.category_id},
-            category_name=#{u.category_name},
+            merchant_name=#{u.merchantName},
+            merchant_id=#{u.merchantId},
+            category_id=#{u.categoryId},
+            category_name=#{u.categoryName},
             images=#{u.images}
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
         update products
-        set  been_deleted=#{been_deleted}
+        set  been_deleted=#{beenDeleted}
         where id = #{id}
     </delete>
 
@@ -72,6 +72,30 @@
         select *
         from products
         where name = #{name} and been_deleted = ture
+    </select>
+
+    <!--/*这种方式使用批量插入中间表*/-->
+    <insert id="insertToCategory">
+        insert into product_to_category
+        (product_id,category_id)
+        values
+        <foreach collection="categoryIds" item="cId" separator=",">
+            (#{productId}, #{cId})
+        </foreach>
+    </insert>
+
+    <select id="findAllByCategory" resultMap="productMap">
+        select *
+        from products
+        where been_deleted= true and id in
+            (select product_id from product_to_category
+            <if test="categoryIds.size>0">
+                where category_id IN
+                /*集合形式传入类别Id*/
+                <foreach collection="categoryIds" item="cId" open="(" separator="," close=")">
+                    #{cId}
+                </foreach>
+            </if>)
     </select>
 
 </mapper>

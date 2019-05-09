@@ -40,45 +40,45 @@
         end_hours,province,city,area,address,logo,out_image,inner_image,id_card_front_image,
         id_card_back_image,business_license,industry_license,state,is_valid,longitude,latitude,
         description,login_account,been_deleted)
-        values (#{id}, #{name}, #{mobile}, #{principal_name},#{principal_mobile},#{start_hours},
-        #{end_hours},#{province},#{city},#{area},#{address},#{logo},#{out_image},#{inner_image},
-        #{id_card_front_image},#{id_card_back_image},#{business_license},#{industry_license},
-        #{industry_license},#{state},#{is_valid},#{longitude},#{latitude},#{description},
-        #{login_account},#{been_deleted})
+        values (#{id}, #{name}, #{mobile}, #{principalName},#{principalMobile},#{startHours},
+        #{endHours},#{province},#{city},#{area},#{address},#{logo},#{outImage},#{innerImage},
+        #{idCardFrontImage},#{idCardBackImage},#{businessLicense},#{industryLicense},
+        #{industryLicense},#{state},#{isValid},#{longitude},#{latitude},#{description},
+        #{loginAccount},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Seller">
         update seller
         set name=#{u.name},
             mobile=#{u.mobile},
-            principal_name=#{u.principal_name},
-            principal_mobile=#{u.principal_mobile},
-            start_hours=#{u.start_hours},
+            principal_name=#{u.principalName},
+            principal_mobile=#{u.principalMobile},
+            start_hours=#{u.startHours},
             description=#{u.description},
-            end_hours=#{u.end_hours},
+            end_hours=#{u.endHours},
             province=#{u.province},
             city=#{u.city},
             area=#{u.area},
             address=#{u.address},
             logo=#{u.logo},
-            out_image=#{u.out_image},
-            inner_image=#{u.inner_image},
-            id_card_front_image=#{u.id_card_front_image},
-            id_card_back_image=#{u.id_card_back_image},
-            business_license=#{u.business_license},
+            out_image=#{u.outImage},
+            inner_image=#{u.innerImage},
+            id_card_front_image=#{u.idCardFrontImage},
+            id_card_back_image=#{u.idCardBackImage},
+            business_license=#{u.businessLicense},
             state=#{u.state},
-            is_valid=#{u.is_valid},
+            is_valid=#{u.isValid},
             longitude=#{u.longitude},
             latitude=#{u.latitude},
             description=#{u.description},
-            login_account=#{u.login_account},
-            been_deleted=#{u.been_deleted}
+            login_account=#{u.loginAccount},
+            been_deleted=#{u.beenDeleted}
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
         update seller
-        set  been_deleted=#{been_deleted}
+        set  been_deleted=#{beenDeleted}
         where id = #{id}
     </delete>
 
