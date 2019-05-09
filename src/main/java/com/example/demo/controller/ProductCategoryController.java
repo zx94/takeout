@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.ProductCategory;
 import com.example.demo.entity.Seller;
 import com.example.demo.service.ProductCategoryService;
+import com.example.demo.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,9 @@ public class ProductCategoryController {
 
     @Autowired
     private ProductCategoryService service;
+
+    @Autowired
+    private ProductsService productsService;
 
     @GetMapping("/index")
     public String index(Model model) {

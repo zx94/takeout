@@ -2,12 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.AuthorityEnum;
 import com.example.demo.entity.Product;
+import com.example.demo.entity.ProductCategory;
+import com.example.demo.service.ProductCategoryService;
 import com.example.demo.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -16,6 +20,9 @@ public class ProductsController {
 
     @Autowired
     private ProductsService service;
+
+    @Autowired
+    private ProductCategoryService categoryService;
 
     @GetMapping("/index")
     public String index(Model model) {
@@ -26,17 +33,17 @@ public class ProductsController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("authorityNames", AuthorityEnum.values());
+        model.addAttribute("categories", categoryService.getAllProductCategories());
         return "product/create";
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Product product, BindingResult result, Model model) {
+    public String create(@ModelAttribute Product product, List<Long> categoryIds, BindingResult result, Model model) {
         //@Valid注解启动后台校验,
         if (result.hasErrors()) {
             model.addAttribute("hintMessage", "出错啦！");
         } else {
-            service.createProduct(product);
+            service.createProduct(product,categoryIds);
         }
         return "redirect:/product/index";
     }

@@ -18,4 +18,6 @@ public interface ProductsMapper{
     void insertToCategory(Long productId, List<Long> categoryIds);
 
     List<Product> findAllByCategory(List<Long> categoryIds);
+
+    List<String> getCategoryNameById(Long id);
 }
