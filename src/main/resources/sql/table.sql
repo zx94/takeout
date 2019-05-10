@@ -83,8 +83,8 @@ CREATE TABLE `products` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
   `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
-  `category_id` bigint(20) DEFAULT NULL COMMENT '分类id',
-  `category_name` varchar(30) DEFAULT NULL COMMENT '分类名称',
+  `category_id` varchar(255) DEFAULT NULL COMMENT '分类id',
+  `category_name` varchar(255) DEFAULT NULL COMMENT '分类名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 

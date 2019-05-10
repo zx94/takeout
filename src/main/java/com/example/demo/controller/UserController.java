@@ -10,7 +10,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
+
+import static com.example.demo.helper.SysConst.USER_SESSION_KEY;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -64,6 +67,13 @@ public class UserController {
     public String delete(@PathVariable Long id)
     {
         userservice.deleteUser(id);
+        return "redirect:/user/index";
+    }
+
+    @GetMapping(value = "/active/{id}")
+    public String active(@PathVariable Long id)
+    {
+        userservice.activeUser(id);
         return "redirect:/user/index";
     }
 }

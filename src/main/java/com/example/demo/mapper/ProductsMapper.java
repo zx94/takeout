@@ -12,12 +12,15 @@ public interface ProductsMapper{
     void update(Long id, Product u);
 
     List<Product> findAll();
+
     Product findById(Long id);
+
     List<Product> findByName(String name);
 
     void insertToCategory(Long productId, List<Long> categoryIds);
 
     List<Product> findAllByCategory(List<Long> categoryIds);
 
-    List<String> getCategoryNameById(Long id);
+    List<Product> findAllBySellerId(Long sellerId);
+
 }

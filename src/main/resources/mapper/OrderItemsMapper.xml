@@ -55,13 +55,13 @@
   <select id="findAll" resultMap="orderItemsMap">
         select *
         from order_items
-        where been_deleted = ture
+        where been_deleted = true
     </select>
 
   <select id="findById" resultMap="orderItemsMap" parameterType="Long">
         select *
         from order_items
-        where id = #{id} and been_deleted = ture
+        where id = #{id} and been_deleted = true
     </select>
 
 </mapper>

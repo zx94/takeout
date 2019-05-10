@@ -10,7 +10,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
             <!-- 上方导航栏 -->
@@ -20,8 +22,8 @@
                 <!-- Page Header -->
                 <div class="page-header row no-gutters py-4">
                     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                        <span class="text-uppercase page-subtitle">Overview</span>
-                        <h3 class="page-title">Data Tables</h3>
+                        <span class="text-uppercase page-subtitle">浏览</span>
+                        <h3 class="page-title">用户表</h3>
                     </div>
                 </div>
                 <!-- End Page Header -->
@@ -42,9 +44,12 @@
                                     <thead class="bg-light">
                                     <tr>
                                         <th scope="col" class="border-0">序号</th>
-                                        <th scope="col" class="border-0">UserName</th>
-                                        <th scope="col" class="border-0">Authority</th>
-                                        <th scope="col" class="border-0"> </th>
+                                        <th scope="col" class="border-0">用户名</th>
+                                        <th scope="col" class="border-0">权限</th>
+                                        <div th:if="${session.user_session.getAuthorityName()=='Admin'}">
+                                            <th scope="col" class="border-0">账户状态</th>
+                                            <th scope="col" class="border-0"> </th>
+                                        </div>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -52,15 +57,23 @@
                                         <td th:text="${iterStat.count}"></td>
                                         <td th:text="${u.userName}"></td>
                                         <td th:text="${u.authorityName}"></td>
-                                        <td>
-                                            <a th:href="@{'/user/edit/'+${u.id}}">
-                                            <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
-                                            </a>
-                                            |
-                                            <a th:href="@{'/user/delete/'+${u.id}}">
-                                            <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
-                                            </a>
-                                        </td>
+                                        <div th:if="${session.user_session.getAuthorityName()=='Admin'}">
+                                            <td th:if="${u.getIsValid()==true}" th:text="已激活"></td>
+                                            <td th:if="${u.getIsValid()!=true}" th:text="未激活"></td>
+                                            <td>
+                                                <a th:href="@{'/user/edit/'+${u.id}}">
+                                                <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
+                                                </a>
+                                                |
+                                                <a th:href="@{'/user/delete/'+${u.id}}">
+                                                <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
+                                                </a>
+                                                |
+                                                <a th:href="@{'/user/active/'+${u.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">激活</button>
+                                                </a>
+                                            </td>
+                                        </div>
                                     </tr>
                                     </tbody>
                                 </table>

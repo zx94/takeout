@@ -99,7 +99,7 @@ public class Product implements Serializable{
 	 * 分类id
 	 */
 	@Column(name = "category_id")
-	private Long categoryId;
+	private String categoryId;
 
 	/**
 	 * 分类名称

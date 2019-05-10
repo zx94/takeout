@@ -37,4 +37,8 @@ public class SellerService{
     public List<Seller> getByName(String Name) {
         return mapper.findByName(Name);
     }
+
+    public Seller getByUserName(String userName) {
+        return mapper.findByUserName(userName);
+    }
 }

@@ -14,4 +14,6 @@ public interface SellerMapper {
     List<Seller> findAll();
     Seller findById(Long id);
     List<Seller> findByName(String name);
+
+    Seller findByUserName(String userName);
 }

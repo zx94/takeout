@@ -42,7 +42,10 @@ public class HomeController {
         //如果session存在，跳转到后台首页
         if (null != user) {
             model.addAttribute("user",user);
-            return "redirect:/welcome";
+            if(user.getAuthorityName()=="Admin")
+                return "redirect:/user/index";
+            else
+                return "redirect:/welcome";
         }
 
         model.addAttribute("user",new User());
@@ -70,7 +73,10 @@ public class HomeController {
         if (null != user.getUserName()||!user.getPassword().isEmpty()) {
             if(data_user.getPassword().equals(user.getPassword()))  {
                 session.setAttribute(USER_SESSION_KEY, data_user);
-                return "redirect:/welcome";
+                if(data_user.getAuthorityName()=="Admin")
+                    return "redirect:/user/index";
+                else
+                    return "redirect:/welcome";
             }
             else {
                 model.addAttribute("hintMessage","账户或密码错误！请重新输入！");
@@ -88,7 +94,10 @@ public class HomeController {
         //如果session存在，跳转到后台首页
         if (null != user) {
             model.addAttribute("user",user);
-            return "redirect:/welcome";
+            if(user.getAuthorityName()=="Admin")
+                return "redirect:/user/index";
+            else
+                return "redirect:/welcome";
         }
 
         model.addAttribute("user",new User());

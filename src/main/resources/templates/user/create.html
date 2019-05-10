@@ -7,7 +7,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
 
@@ -37,7 +39,7 @@
                     <div class="col-lg-12">
                         <div class="card card-small mb-4">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Account Details</h6>
+                                <h6 class="m-0">创建用户</h6>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item p-3">

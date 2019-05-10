@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.AuthorityEnum;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.ProductCategory;
+import com.example.demo.entity.User;
 import com.example.demo.service.ProductCategoryService;
 import com.example.demo.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static com.example.demo.helper.SysConst.USER_SESSION_KEY;
 
 
 @Controller
@@ -38,12 +42,13 @@ public class ProductsController {
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Product product, List<Long> categoryIds, BindingResult result, Model model) {
+    public String create(@ModelAttribute Product product, @RequestParam List<Long> controlIdsValue, BindingResult result, Model model, HttpSession session) {
+        final User user = (User) session.getAttribute(USER_SESSION_KEY);
         //@Valid注解启动后台校验,
         if (result.hasErrors()) {
             model.addAttribute("hintMessage", "出错啦！");
         } else {
-            service.createProduct(product,categoryIds);
+            service.createProduct(product,controlIdsValue,user);
         }
         return "redirect:/product/index";
     }

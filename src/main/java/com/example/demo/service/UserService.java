@@ -45,6 +45,12 @@ public class UserService {
     public void updateUser(Long id,User u){
         mapper.update(id,u);
     }
+
+    public void activeUser(Long id){
+        User u = mapper.findById(id);
+        u.setIsValid(true);
+        mapper.update(id,u);
+    }
     public void deleteUser(Long id){
         mapper.delete(id);
     }

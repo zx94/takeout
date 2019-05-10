@@ -85,19 +85,25 @@
   <select id="findAll" resultMap="productMap">
         select *
         from products
-        where been_deleted = ture
+        where been_deleted = true
     </select>
 
   <select id="findById" resultMap="productMap" parameterType="Long">
         select *
         from products
-        where id = #{id} and been_deleted = ture
+        where id = #{id} and been_deleted = true
+    </select>
+
+    <select id="findAllBySellerId" resultMap="productMap" parameterType="Long">
+        select *
+        from products
+        where merchant_id = #{sellerId} and been_deleted = true
     </select>
 
   <select id="findByName" resultMap="productMap" parameterType="String">
         select *
         from products
-        where name = #{name} and been_deleted = ture
+        where name = #{name} and been_deleted = true
     </select>
 
     <!--/*这种方式使用批量插入中间表*/-->
@@ -124,39 +130,5 @@
             </if>)
     </select>
 
-    <!-- 注意：继承productMap -->
-    <resultMap id="productCategoryMap" type="user" extends="productMap">
-        <!-- 一对多 -->
-        <collection property="productToCategories" ofType="com.example.demo.entity.ProductToCategory">
-            <result property="productId" column="product_id"/>
-            <result property="categoryId" column="category_id"/>
-            <!-- 一对多 -->
-            <collection property="productCategories" ofType="com.example.demo.entity.ProductCategory">
-                <id property="id" column="id"/>
-                <result column="name" jdbcType="VARCHAR" property="name" />
-                <result column="description" jdbcType="VARCHAR" property="description" />
-                <result column="state" jdbcType="INTEGER" property="state" />
-                <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
-                <result column="merchant_id" jdbcType="BIGINT" property="merchantId" />
-                <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
-                <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-                <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
-                <result column="been_deleted" jdbcType="BIT" property="beenDeleted" />
-                <result column="images" jdbcType="LONGVARCHAR" property="images" />
-            </collection>
-        </collection>
-    </resultMap>
-
-    <select id="getCategoryNameById" resultMap="productCategoryMap">
-        select name
-        from product_category
-        where been_deleted= true and id in
-        (
-            select category_id
-            from product_to_category
-            where product_id = id
-        )
-
-    </select>
 
 </mapper>

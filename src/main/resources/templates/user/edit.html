@@ -7,7 +7,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
 
@@ -20,7 +22,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
                 <i class="fa fa-check mx-2"></i>
-                <strong>请完善以下用户信息</strong>
+                <strong>请修改以下用户信息</strong>
             </div>
 
             <div class="main-content-container container-fluid px-4">
