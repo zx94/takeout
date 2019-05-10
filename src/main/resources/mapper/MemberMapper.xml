@@ -30,14 +30,32 @@
 
   <update id="update" parameterType="com.example.demo.entity.Member">
         update member
-        set member_name=#{u.memberName},
-            mobile=#{u.mobile},
-            name=#{u.name},
-            avatar=#{u.avatar},
-            id_card_front_image=#{u.idCardFrontImage},
-            id_card_back_image=#{u.idCardBackImage},
-            is_valid=#{u.is_valid},
-            been_deleted=#{u.beenDeleted}
+        <set>
+            <if test="u.memberName != null and u.memberName != ''">
+                member_name=#{u.memberName},
+            </if>
+            <if test="u.mobile != null and u.mobile != ''">
+                mobile=#{u.mobile},
+            </if>
+            <if test="u.name != null and u.name != ''">
+                name=#{u.name},
+            </if>
+            <if test="u.avatar != null and u.avatar != ''">
+                avatar=#{u.avatar},
+            </if>
+            <if test="u.idCardFrontImage != null and u.idCardFrontImage != ''">
+                id_card_front_image=#{u.idCardFrontImage},
+            </if>
+            <if test="u.idCardBackImage != null and u.idCardBackImage != ''">
+                id_card_back_image=#{u.idCardBackImage},
+            </if>
+            <if test="u.isValid != null and u.isValid != ''">
+                is_valid=#{u.isValid},
+            </if>
+            <if test="u.beenDeleted != null and u.beenDeleted != ''">
+                been_deleted=#{u.beenDeleted},
+            </if>
+        </set>
         where id = #{u.id}
     </update>
 

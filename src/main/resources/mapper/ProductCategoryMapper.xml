@@ -27,12 +27,26 @@
 
   <update id="update" parameterType="com.example.demo.entity.ProductCategory">
         update product_category
-        set name=#{u.name},
-            description=#{u.description},
-            state=#{u.state},
-            merchant_name=#{u.merchantName},
-            merchant_id=#{u.merchantId},
-            images=#{u.images}
+        <set>
+            <if test="u.name != null and u.name != ''">
+                name=#{u.name},
+            </if>
+            <if test="u.description != null and u.description != ''">
+                description=#{u.description},
+            </if>
+            <if test="u.state != null and u.state != ''">
+                state=#{u.state},
+            </if>
+            <if test="u.merchantName != null and u.merchantName != ''">
+                merchant_name=#{u.merchantName},
+            </if>
+            <if test="u.merchantId != null and u.merchantId != ''">
+                merchant_id=#{u.merchantId},
+            </if>
+            <if test="u.images != null and u.images != ''">
+                images=#{u.images}
+            </if>
+        </set>
         where id = #{u.id}
     </update>
 

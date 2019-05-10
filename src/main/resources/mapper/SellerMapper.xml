@@ -43,36 +43,86 @@
         values (#{id}, #{name}, #{mobile}, #{principalName},#{principalMobile},#{startHours},
         #{endHours},#{province},#{city},#{area},#{address},#{logo},#{outImage},#{innerImage},
         #{idCardFrontImage},#{idCardBackImage},#{businessLicense},#{industryLicense},
-        #{industryLicense},#{state},#{isValid},#{longitude},#{latitude},#{description},
+        #{state},#{isValid},#{longitude},#{latitude},#{description},
         #{loginAccount},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Seller">
         update seller
-        set name=#{u.name},
-            mobile=#{u.mobile},
-            principal_name=#{u.principalName},
-            principal_mobile=#{u.principalMobile},
-            start_hours=#{u.startHours},
-            description=#{u.description},
-            end_hours=#{u.endHours},
-            province=#{u.province},
-            city=#{u.city},
-            area=#{u.area},
-            address=#{u.address},
-            logo=#{u.logo},
-            out_image=#{u.outImage},
-            inner_image=#{u.innerImage},
-            id_card_front_image=#{u.idCardFrontImage},
-            id_card_back_image=#{u.idCardBackImage},
-            business_license=#{u.businessLicense},
-            state=#{u.state},
-            is_valid=#{u.isValid},
-            longitude=#{u.longitude},
-            latitude=#{u.latitude},
-            description=#{u.description},
-            login_account=#{u.loginAccount},
-            been_deleted=#{u.beenDeleted}
+        <set>
+            <if test="u.name != null and u.name != ''">
+                name=#{u.name},
+            </if>
+            <if test="u.mobile != null and u.mobile != ''">
+                mobile=#{u.mobile},
+            </if>
+            <if test="u.principalName != null and u.principalName != ''">
+                principal_name=#{u.principalName},
+            </if>
+            <if test="u.principalMobile != null and u.principalMobile != ''">
+                principal_mobile=#{u.principalMobile},
+            </if>
+            <if test="u.startHours != null and u.startHours != ''">
+                start_hours=#{u.startHours},
+            </if>
+            <if test="u.endHours != null and u.endHours != ''">
+                end_hours=#{u.endHours},
+            </if>
+            <if test="u.province != null and u.province != ''">
+                province=#{u.province},
+            </if>
+            <if test="u.city != null and u.city != ''">
+                city=#{u.city},
+            </if>
+            <if test="u.area != null and u.area != ''">
+                area=#{u.area},
+            </if>
+            <if test="u.address != null and u.address != ''">
+                address=#{u.address},
+            </if>
+            <if test="u.logo != null and u.logo != ''">
+                logo=#{u.logo},
+            </if>
+            <if test="u.outImage != null and u.outImage != ''">
+                out_image=#{u.outImage},
+            </if>
+            <if test="u.innerImage != null and u.innerImage != ''">
+                inner_image=#{u.innerImage},
+            </if>
+            <if test="u.idCardFrontImage != null and u.idCardFrontImage != ''">
+                id_card_front_image=#{u.idCardFrontImage},
+            </if>
+            <if test="u.idCardBackImage != null and u.idCardBackImage != ''">
+                id_card_back_image=#{u.idCardBackImage},
+            </if>
+            <if test="u.businessLicense != null and u.businessLicense != ''">
+                business_license=#{u.businessLicense},
+            </if>
+            <if test="u.industryLicense != null and u.industryLicense != ''">
+                industry_license=#{u.industryLicense},
+            </if>
+            <if test="u.state != null and u.state != ''">
+                state=#{u.state},
+            </if>
+            <if test="u.isValid != null and u.isValid != ''">
+                is_valid=#{u.isValid},
+            </if>
+            <if test="u.longitude != null and u.longitude != ''">
+                longitude=#{u.longitude},
+            </if>
+            <if test="u.latitude != null and u.latitude != ''">
+                latitude=#{u.latitude},
+            </if>
+            <if test="u.description != null and u.description != ''">
+                description=#{u.description},
+            </if>
+            <if test="u.loginAccount != null and u.loginAccount != ''">
+                login_account=#{u.loginAccount},
+            </if>
+            <if test="u.beenDeleted != null and u.beenDeleted != ''">
+                been_deleted=#{u.beenDeleted}
+            </if>
+        </set>
         where id = #{u.id}
     </update>
 

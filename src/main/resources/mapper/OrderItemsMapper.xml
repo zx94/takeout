@@ -29,10 +29,20 @@
 
   <update id="update" parameterType="com.example.demo.entity.OrderItems">
         update order_items
-        set product_name=#{u.productName},
-            product_id=#{u.productId},
-            product_price=#{u.productPrice},
-            product_discount=#{u.productDiscount},
+        <set>
+            <if test="u.productName != null and u.productName != ''">
+                product_name=#{u.productName},
+            </if>
+            <if test="u.productId != null and u.productId != ''">
+                product_id=#{u.productId},
+            </if>
+            <if test="u.productPrice != null and u.productPrice != ''">
+                product_price=#{u.productPrice},
+            </if>
+            <if test="u.productDiscount != null and u.productDiscount != ''">
+                product_discount=#{u.productDiscount}
+            </if>
+        </set>
         where id = #{u.id}
     </update>
 

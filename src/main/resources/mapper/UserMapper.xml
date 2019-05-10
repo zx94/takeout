@@ -13,14 +13,24 @@
 
     <insert id="create" parameterType="com.example.demo.entity.User">
         insert into user(id, user_name, authority_name, password,is_valid)
-        values (#{id}, #{user_name}, #{authority_name}, #{password},#{is_valid})
+        values (#{id}, #{userName}, #{authorityName}, #{password},#{isValid})
     </insert>
     <update id="update" parameterType="com.example.demo.entity.User">
         update user
-        set user_name=#{u.user_name},
-            authority_name=#{u.authority_name},
-            password=#{u.password},
-            is_valid=#{u.is_valid}
+        <set>
+            <if test="u.userName != null and u.userName != ''">
+                user_name=#{u.userName},
+            </if>
+            <if test="u.authorityName != null and u.authorityName != ''">
+                authority_name=#{u.authorityName},
+            </if>
+            <if test="u.password != null and u.password != ''">
+                u.password=#{u.password},
+            </if>
+            <if test="u.isValid != null and u.isValid != ''">
+                u.is_valid=#{u.isValid}
+            </if>
+        </set>
         where id = #{u.id}
     </update>
     <delete id="delete" parameterType="Long">
@@ -36,7 +46,7 @@
     <select id="findByUserName" resultMap="userMap" parameterType="String">
         select *
         from user
-        where user_name = #{user_name}
+        where user_name = #{userName}
     </select>
 
 </mapper>

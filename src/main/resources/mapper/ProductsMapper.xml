@@ -35,18 +35,44 @@
 
   <update id="update" parameterType="com.example.demo.entity.Product">
         update products
-        set name=#{u.name},
-            price=#{u.price},
-            in_stocks=#{u.inStocks},
-            sales_volume=#{u.salesVolume},
-            sales_month_volume=#{u.salesMonthVolume},
-            description=#{u.description},
-            state=#{u.state},
-            merchant_name=#{u.merchantName},
-            merchant_id=#{u.merchantId},
-            category_id=#{u.categoryId},
-            category_name=#{u.categoryName},
-            images=#{u.images}
+        <set>
+            <if test="u.name != null and u.name != ''">
+                name=#{u.name},
+            </if>
+            <if test="u.price != null and u.price != ''">
+                price=#{u.price},
+            </if>
+            <if test="u.inStocks != null and u.inStocks != ''">
+                in_stocks=#{u.inStocks},
+            </if>
+            <if test="u.salesVolume != null and u.salesVolume != ''">
+                sales_volume=#{u.salesVolume},
+            </if>
+            <if test="u.salesMonthVolume != null and u.salesMonthVolume != ''">
+                sales_month_volume=#{u.salesMonthVolume},
+            </if>
+            <if test="u.description != null and u.description != ''">
+                description=#{u.description},
+            </if>
+            <if test="u.state != null and u.state != ''">
+                state=#{u.state},
+            </if>
+            <if test="u.merchantName != null and u.merchantName != ''">
+                merchantName=#{u.merchantName},
+            </if>
+            <if test="u.merchantId != null and u.merchantId != ''">
+                merchantId=#{u.merchantId},
+            </if>
+            <if test="u.categoryId != null and u.categoryId != ''">
+                categoryId=#{u.categoryId},
+            </if>
+            <if test="u.categoryName != null and u.categoryName != ''">
+                categoryName=#{u.categoryName},
+            </if>
+            <if test="u.images != null and u.images != ''">
+                image=#{u.images}
+            </if>
+        </set>
         where id = #{u.id}
     </update>
 
