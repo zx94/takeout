@@ -19,12 +19,18 @@ public class ProductsService{
     private ProductsMapper mapper;
 
     @Autowired
+    private ProductToCategoryMapper productToCategoryMapper;
+
+    @Autowired
     private SellerService sellerService;
+
+    @Autowired
+    private ProductCategoryService productCategoryService;
 
     @Autowired
     private SnowflakeIdWorker idWorker;
 
-    public void createProduct(Product u, List<Long> categoryIds, User user) {
+    public void createProduct(Product u, List<String> categoryNames, User user) {
         u.setId(idWorker.nextId());
         u.setMerchantName(user.getUserName());
 
@@ -32,14 +38,44 @@ public class ProductsService{
             u.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
         }
 
+        List<Long> categoryIds= createNULLCategory(categoryNames,user);
+
         mapper.create(u);
+
+        //中间表关联
+        mapper.insertToCategory(u.getId(),categoryIds);
+    }
+
+    public void updateProduct(Long id,Product u, List<String> categoryNames, User user){
+        List<Long> categoryIds= createNULLCategory(categoryNames,user);
+
+        mapper.update(id,u);
+
+        List<ProductToCategory> ptcs= productToCategoryMapper.findAllByProductId(id);
+
+        for(ProductToCategory ptc : ptcs)
+            productToCategoryMapper.delete(ptc.getProductId(),ptc.getCategoryId());
 
         mapper.insertToCategory(u.getId(),categoryIds);
     }
 
-    public void updateProduct(Long id,Product u){
-        mapper.update(id,u);
+    public List<Long> createNULLCategory(List<String> categoryNames, User user){
+        List<Long> categoryIds= null;
+
+        for (String name:categoryNames) {
+            ProductCategory productCategory= productCategoryService.getByName(name);
+            if(user.getAuthorityName()== AuthorityEnum.Seller.getValue()) {
+                productCategory.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
+            }
+            if(productCategory==null){
+                productCategory.setId(idWorker.nextId());
+                productCategoryService.createProductCategory(productCategory);
+            }
+            categoryIds.add(productCategory.getId());
+        }
+        return categoryIds;
     }
+
     public void deleteProduct(Long id){
         mapper.delete(id);
     }

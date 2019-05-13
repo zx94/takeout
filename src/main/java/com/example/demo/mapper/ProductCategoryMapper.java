@@ -13,7 +13,7 @@ public interface ProductCategoryMapper{
 
     List<ProductCategory> findAll();
     ProductCategory findById(Long id);
-    List<ProductCategory> findByName(String name);
+    ProductCategory findByName(String name);
 
     void insertToProduct(Long categoryId, List<Long> productIds);
 

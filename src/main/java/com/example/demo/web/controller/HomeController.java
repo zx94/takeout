@@ -42,7 +42,7 @@ public class HomeController {
         //如果session存在，跳转到后台首页
         if (null != user) {
             model.addAttribute("user",user);
-            if(user.getAuthorityName()=="Admin")
+            if(user.getAuthorityName().equals("Admin"))
                 return "redirect:/user/index";
             else
                 return "redirect:/welcome";
@@ -73,7 +73,7 @@ public class HomeController {
         if (null != user.getUserName()||!user.getPassword().isEmpty()) {
             if(data_user.getPassword().equals(user.getPassword()))  {
                 session.setAttribute(USER_SESSION_KEY, data_user);
-                if(data_user.getAuthorityName()=="Admin")
+                if(data_user.getAuthorityName().equals("Admin"))
                     return "redirect:/user/index";
                 else
                     return "redirect:/welcome";
@@ -94,7 +94,7 @@ public class HomeController {
         //如果session存在，跳转到后台首页
         if (null != user) {
             model.addAttribute("user",user);
-            if(user.getAuthorityName()=="Admin")
+            if(user.getAuthorityName().equals("Admin"))
                 return "redirect:/user/index";
             else
                 return "redirect:/welcome";

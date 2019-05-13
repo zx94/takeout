@@ -22,12 +22,12 @@
                 <!-- Page Header -->
                 <div class="page-header row no-gutters py-4">
                     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                        <span class="text-uppercase page-subtitle">Overview</span>
-                        <h3 class="page-title">Data Tables</h3>
+                        <span class="text-uppercase page-subtitle">预览</span>
+                        <h3 class="page-title">商品表</h3>
                     </div>
                 </div>
                 <!-- End Page Header -->
-                <a href="/user/create" th:href="@{/user/create}">
+                <a href="/products/create" th:href="@{/products/create}">
                     <button type="button" class="mb-2 btn btn-white mr-2">
                         创建产品
                     </button>
@@ -37,7 +37,7 @@
                     <div class="col">
                         <div class="card card-small mb-4">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Active Users</h6>
+                                <h6 class="m-0">商品表</h6>
                             </div>
                             <div class="card-body p-0 pb-3 text-center">
                                 <table class="table mb-0">
@@ -69,11 +69,11 @@
                                         <td th:text="${p.merchantName}"></td>
                                         <td th:text="${p.categoryName}"></td>
                                         <td>
-                                            <a th:href="@{'/user/edit/'+${p.id}}">
+                                            <a th:href="@{'/products/edit/'+${p.id}}">
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
                                             </a>
                                             |
-                                            <a th:href="@{'/user/delete/'+${p.id}}">
+                                            <a th:href="@{'/products/delete/'+${p.id}}">
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
                                             </a>
                                         </td>

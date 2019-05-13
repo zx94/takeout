@@ -78,7 +78,7 @@
 
   <delete id="delete" parameterType="Long">
         update products
-        set  been_deleted=#{beenDeleted}
+        set  been_deleted=false
         where id = #{id}
     </delete>
 

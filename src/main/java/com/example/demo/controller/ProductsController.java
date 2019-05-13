@@ -42,7 +42,7 @@ public class ProductsController {
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Product product, @RequestParam List<Long> controlIdsValue, BindingResult result, Model model, HttpSession session) {
+    public String create(@ModelAttribute Product product, @RequestParam List<String> controlIdsValue, BindingResult result, Model model, HttpSession session) {
         final User user = (User) session.getAttribute(USER_SESSION_KEY);
         //@Valid注解启动后台校验,
         if (result.hasErrors()) {
@@ -56,16 +56,18 @@ public class ProductsController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id,Model model) {
         model.addAttribute("product", service.getById(id));
+        model.addAttribute("categories", categoryService.getAllProductCategories());
         return "product/edit";
     }
 
     @PostMapping(value = "/edit")
-    public String edit(@ModelAttribute Product product, BindingResult result, Model model) {
+    public String edit(@ModelAttribute Product product,@RequestParam List<String> controlIdsValue, BindingResult result, Model model, HttpSession session) {
         //@Valid注解启动后台校验,
+        final User user = (User) session.getAttribute(USER_SESSION_KEY);
         if (result.hasErrors()) {
             model.addAttribute("hintMessage", "出错啦！");
         } else {
-            service.updateProduct(product.getId(),product);
+            service.updateProduct(product.getId(),product,controlIdsValue,user);
         }
         return "redirect:/product/index";
     }
