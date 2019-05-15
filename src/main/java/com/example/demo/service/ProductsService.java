@@ -33,8 +33,9 @@ public class ProductsService{
     public void createProduct(Product u, List<String> categoryNames, User user) {
         u.setId(idWorker.nextId());
         u.setMerchantName(user.getUserName());
+        u.setBeenDeleted(false);
 
-        if(user.getAuthorityName()== AuthorityEnum.Seller.getValue()){
+        if(user.getAuthorityName().equals(AuthorityEnum.Seller.getValue())){
             u.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
         }
 
@@ -63,8 +64,8 @@ public class ProductsService{
         List<Long> categoryIds= null;
 
         for (String name:categoryNames) {
-            ProductCategory productCategory= productCategoryService.getByName(name);
-            if(user.getAuthorityName()== AuthorityEnum.Seller.getValue()) {
+            ProductCategory productCategory = productCategoryService.getByName(name);
+            if(user.getAuthorityName().equals(AuthorityEnum.Seller.getValue())) {
                 productCategory.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
             }
             if(productCategory==null){

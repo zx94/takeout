@@ -21,6 +21,7 @@ public class MemberService {
 
     public void createMember(Member u) {
         u.setId(idWorker.nextId());
+        u.setBeenDeleted(false);
         mapper.create(u);
     }
     public void updateMember(Long id,Member u){

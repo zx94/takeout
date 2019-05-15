@@ -20,6 +20,7 @@ public class OrderItemsService {
 
     public void createOrderItems(OrderItems u) {
         u.setId(idWorker.nextId());
+        u.setBeenDeleted(false);
         mapper.create(u);
     }
     public void updateOrderItems(Long id,OrderItems u){

@@ -19,6 +19,7 @@ public class SellerService{
 
     public void createSeller(Seller u) {
         u.setId(idWorker.nextId());
+        u.setBeenDeleted(false);
         mapper.create(u);
     }
     public void updateSeller(Long id,Seller u){

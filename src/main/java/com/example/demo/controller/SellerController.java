@@ -17,7 +17,7 @@ public class SellerController {
     @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("seller", service.getAllSellers());
-        return "seller/list";
+        return "index/seller_index";
     }
 
     @GetMapping("/create")

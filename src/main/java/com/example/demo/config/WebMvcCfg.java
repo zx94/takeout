@@ -19,9 +19,9 @@ public class WebMvcCfg implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/index")
-                .addPathPatterns("/products/**")
                 .addPathPatterns("/user/**")
+                .addPathPatterns("/products/**")
+                .addPathPatterns("/category/**")
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/static/**");
     }

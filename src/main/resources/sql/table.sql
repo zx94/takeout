@@ -3,7 +3,7 @@ create table `user`(
     `user_name` varchar(50) DEFAULT NULL COMMENT '用户名',
     `authority_name` varchar(10) DEFAULT NULL COMMENT '权限',
     `password` varchar(22) DEFAULT NULL COMMENT '密码',
-    `is_valid` tinyint(1) DEFAULT false COMMENT '是否有效',
+    `is_valid` tinyint(1) DEFAULT FALSE COMMENT '是否有效',
 )engine = InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` VALUES ('1', 'admin', 'Admin', '123456', '1');
@@ -39,7 +39,7 @@ CREATE TABLE `seller` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商户信息表';
 
@@ -58,7 +58,7 @@ CREATE TABLE `member` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   `openid` varchar(20) DEFAULT NULL COMMENT '用户的微笑openid',
   `wx_info_id` bigint(20) DEFAULT NULL COMMENT 'wxUserInfo表中的id',
   PRIMARY KEY (`id`)
@@ -82,7 +82,7 @@ CREATE TABLE `products` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   `category_id` varchar(255) DEFAULT NULL COMMENT '分类id',
   `category_name` varchar(255) DEFAULT NULL COMMENT '分类名称',
   PRIMARY KEY (`id`)
@@ -100,7 +100,7 @@ CREATE TABLE `product_category` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品分类表';
 
@@ -127,7 +127,7 @@ CREATE TABLE `order` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间(订单时间)',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单信息表';
 
@@ -145,7 +145,7 @@ CREATE TABLE `order_items` (
   `insert_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间(订单时间)',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
   `delete_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间',
-  `been_deleted` tinyint(1) DEFAULT NULL COMMENT '是否已删除',
+  `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单详细信息表';
 

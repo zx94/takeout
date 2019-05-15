@@ -10,9 +10,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
-        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
-        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Seller')}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Memeber')}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
             <!-- 上方导航栏 -->
@@ -46,7 +46,7 @@
                                         <th scope="col" class="border-0">序号</th>
                                         <th scope="col" class="border-0">用户名</th>
                                         <th scope="col" class="border-0">权限</th>
-                                        <div th:if="${session.user_session.getAuthorityName()=='Admin'}">
+                                        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}">
                                             <th scope="col" class="border-0">账户状态</th>
                                             <th scope="col" class="border-0"> </th>
                                         </div>
@@ -57,7 +57,7 @@
                                         <td th:text="${iterStat.count}"></td>
                                         <td th:text="${u.userName}"></td>
                                         <td th:text="${u.authorityName}"></td>
-                                        <div th:if="${session.user_session.getAuthorityName()=='Admin'}">
+                                        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}">
                                             <td th:if="${u.getIsValid()==true}" th:text="已激活"></td>
                                             <td th:if="${u.getIsValid()!=true}" th:text="未激活"></td>
                                             <td>

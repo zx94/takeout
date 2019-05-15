@@ -21,6 +21,7 @@ public class OrderService{
 
     public void createOrder(Order u) {
         u.setId(idWorker.nextId());
+        u.setBeenDeleted(false);
         mapper.create(u);
     }
     public void updateOrder(Long id,Order u){

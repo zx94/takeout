@@ -78,32 +78,32 @@
 
   <delete id="delete" parameterType="Long">
         update products
-        set  been_deleted=false
+        set  been_deleted=true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="productMap">
         select *
         from products
-        where been_deleted = true
+        where been_deleted = false
     </select>
 
   <select id="findById" resultMap="productMap" parameterType="Long">
         select *
         from products
-        where id = #{id} and been_deleted = true
+        where id = #{id} and been_deleted = false
     </select>
 
     <select id="findAllBySellerId" resultMap="productMap" parameterType="Long">
         select *
         from products
-        where merchant_id = #{sellerId} and been_deleted = true
+        where merchant_id = #{sellerId} and been_deleted = false
     </select>
 
   <select id="findByName" resultMap="productMap" parameterType="String">
         select *
         from products
-        where name = #{name} and been_deleted = true
+        where name = #{name} and been_deleted = false
     </select>
 
     <!--/*这种方式使用批量插入中间表*/-->
@@ -119,7 +119,7 @@
     <select id="findAllByCategory" resultMap="productMap">
         select *
         from products
-        where been_deleted= true and id in
+        where been_deleted= false and id in
             (select product_id from product_to_category
             <if test="categoryIds.size>0">
                 where category_id IN

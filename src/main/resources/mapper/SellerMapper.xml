@@ -128,31 +128,31 @@
 
   <delete id="delete" parameterType="Long">
         update seller
-        set  been_deleted=#{beenDeleted}
+        set  been_deleted = true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="sellerMap">
         select *
         from seller
-        where been_deleted = true
+        where been_deleted = false
     </select>
 
   <select id="findById" resultMap="sellerMap" parameterType="Long">
         select *
         from seller
-        where id = #{id} and been_deleted = true
+        where id = #{id} and been_deleted = false
     </select>
 
   <select id="findByName" resultMap="sellerMap" parameterType="String">
         select *
         from seller
-        where name like CONCAT(CONCAT('%', #{name}), '%') and been_deleted = true
+        where name like CONCAT(CONCAT('%', #{name}), '%') and been_deleted = false
     </select>
 
     <select id="findByUserName" resultMap="sellerMap" parameterType="String">
         select *
         from seller
-        where login_account = #{userName} and been_deleted = true
+        where login_account = #{userName} and been_deleted = false
     </select>
 </mapper>

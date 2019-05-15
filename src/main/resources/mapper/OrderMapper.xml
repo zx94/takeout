@@ -49,20 +49,20 @@
 
   <delete id="delete" parameterType="Long">
         update order
-        set  been_deleted=#{beenDeleted}
+        set  been_deleted = true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="orderMap">
         select *
         from order
-        where been_deleted = true
+        where been_deleted = false
     </select>
 
   <select id="findById" resultMap="orderMap" parameterType="Long">
         select *
         from order
-        where id = #{id} and been_deleted = true
+        where id = #{id} and been_deleted = false
     </select>
 
 </mapper>

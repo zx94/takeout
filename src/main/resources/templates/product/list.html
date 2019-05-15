@@ -10,9 +10,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
-        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
-        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Seller')}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Memeber')}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
             <!-- 上方导航栏 -->
@@ -53,7 +53,9 @@
                                         <th scope="col" class="border-0">描述</th>
                                         <th scope="col" class="border-0">商户</th>
                                         <th scope="col" class="border-0">种类</th>
-                                        <th scope="col" class="border-0"> </th>
+                                        <div th:if="${session.user_session.getAuthorityName()!='Seller'}">
+                                            <th scope="col" class="border-0"> </th>
+                                        </div>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -68,6 +70,7 @@
                                         <td th:text="${p.description}"></td>
                                         <td th:text="${p.merchantName}"></td>
                                         <td th:text="${p.categoryName}"></td>
+                                        <div th:if="${session.user_session.getAuthorityName()!='Seller'}">
                                         <td>
                                             <a th:href="@{'/products/edit/'+${p.id}}">
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
@@ -77,6 +80,7 @@
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
                                             </a>
                                         </td>
+                                        </div>
                                     </tr>
                                     </tbody>
                                 </table>

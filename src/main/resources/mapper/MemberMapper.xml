@@ -61,25 +61,25 @@
 
   <delete id="delete" parameterType="Long">
         update member
-        set  been_deleted=#{beenDeleted}
+        set  been_deleted=true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="memberMap">
         select *
         from member
-        where been_deleted = true
+        where been_deleted = false
     </select>
 
   <select id="findById" resultMap="memberMap" parameterType="Long">
         select *
         from member
-        where id = #{id} and been_deleted = true
+        where id = #{id} and been_deleted = false
     </select>
 
   <select id="findByName" resultMap="memberMap" parameterType="String">
         select *
         from member
-        where name = #{name} and been_deleted = true
+        where name = #{name} and been_deleted = false
     </select>
 </mapper>

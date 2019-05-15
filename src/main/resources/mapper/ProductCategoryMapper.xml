@@ -22,7 +22,7 @@
         insert into product_category(id, name, description,state,
         merchant_name,merchant_id,been_deleted,images)
         values (#{id}, #{name},#{description},#{state},
-        #{merchantName},#{merchantId},#{images})
+        #{merchantName},#{merchantId},#{beenDeleted},#{images})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.ProductCategory">
@@ -52,26 +52,26 @@
 
   <delete id="delete" parameterType="Long">
         update product_category
-        set  been_deleted=#{beenDeleted}
+        set  been_deleted= true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="productCategoryMap">
         select *
         from product_category
-        where been_deleted = true
+        where been_deleted = false
     </select>
 
   <select id="findById" resultMap="productCategoryMap" parameterType="Long">
         select *
         from product_category
-        where id = #{id} and been_deleted = true
+        where id = #{id} and been_deleted = false
     </select>
 
   <select id="findByName" resultMap="productCategoryMap" parameterType="String">
         select *
         from product_category
-        where name = #{name} and been_deleted = true
+        where name = #{name} and been_deleted = false
     </select>
 
     <!--/*这种方式使用批量插入中间表*/-->
@@ -87,7 +87,7 @@
     <select id="findAllByProduct" resultMap="productCategoryMap">
         select *
         from product_category
-        where been_deleted= true and id in
+        where been_deleted= false and id in
         (select category_id from product_to_category
         <if test="productIds.size>0">
             where product_id IN
