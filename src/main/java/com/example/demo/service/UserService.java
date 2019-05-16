@@ -28,13 +28,13 @@ public class UserService {
     public void createUser(User u) {
         u.setId(idWorker.nextId());
 
-        if(u.getAuthorityName()== AuthorityEnum.Seller.getValue()){
+        if(u.getAuthorityName().equals(AuthorityEnum.Seller.getValue())){
             Seller seller=new Seller();
             seller.setLoginAccount(u.getUserName());
             sellerService.createSeller(seller);
         }
 
-        if(u.getAuthorityName()== AuthorityEnum.Member.getValue()){
+        if(u.getAuthorityName().equals(AuthorityEnum.Member.getValue())){
             Member member=new Member();
             member.setName(u.getUserName());
             memberService.createMember(member);

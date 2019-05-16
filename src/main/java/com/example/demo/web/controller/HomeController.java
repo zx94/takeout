@@ -44,6 +44,8 @@ public class HomeController {
             model.addAttribute("user",user);
             if(user.getAuthorityName().equals("Admin"))
                 return "redirect:/user/index";
+            if(user.getAuthorityName().equals("Seller"))
+                return "redirect:/seller/index";
             else
                 return "redirect:/welcome";
         }
@@ -139,7 +141,12 @@ public class HomeController {
 
         session.setAttribute(USER_SESSION_KEY, data_user);
 
-        return "redirect:/welcome";
+        if(data_user.getAuthorityName().equals("Admin"))
+            return "redirect:/user/index";
+        if(data_user.getAuthorityName().equals("Seller"))
+            return "redirect:/seller/index";
+        else
+            return "redirect:/welcome";
     }
 
     /**

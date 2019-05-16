@@ -28,8 +28,8 @@
         insert into products(id, name, price, in_stocks,sales_volume,sales_month_volume,
         description,state,merchant_name,merchant_id,been_deleted,category_id,category_name,
         images)
-        values (#{id}, #{name}, #{price}, #{in_stocks},#{salesVolume},#{salesMonthVolume},
-        #{description},#{state},#{merchantName},#{merchantId},#{categoryId},#{categoryName},
+        values (#{id}, #{name}, #{price}, #{inStocks},#{salesVolume},#{salesMonthVolume},
+        #{description},#{state},#{merchantName},#{merchantId},#{beenDeleted},#{categoryId},#{categoryName},
         #{images})
     </insert>
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,7 +37,8 @@ public class ProductsService{
         u.setBeenDeleted(false);
 
         if(user.getAuthorityName().equals(AuthorityEnum.Seller.getValue())){
-            u.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
+            Long sellerId=sellerService.getByUserName(user.getUserName()).getId();
+            u.setMerchantId(sellerId);
         }
 
         List<Long> categoryIds= createNULLCategory(categoryNames,user);
@@ -61,18 +63,19 @@ public class ProductsService{
     }
 
     public List<Long> createNULLCategory(List<String> categoryNames, User user){
-        List<Long> categoryIds= null;
+        List<Long> categoryIds= new ArrayList<Long>();
 
         for (String name:categoryNames) {
             ProductCategory productCategory = productCategoryService.getByName(name);
-            if(user.getAuthorityName().equals(AuthorityEnum.Seller.getValue())) {
-                productCategory.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
-            }
             if(productCategory==null){
                 productCategory.setId(idWorker.nextId());
+                if(user.getAuthorityName().equals(AuthorityEnum.Seller.getValue())) {
+                    productCategory.setMerchantId(sellerService.getByUserName(user.getUserName()).getId());
+                }
                 productCategoryService.createProductCategory(productCategory);
             }
-            categoryIds.add(productCategory.getId());
+            Long cateId=productCategory.getId();
+            categoryIds.add(cateId);
         }
         return categoryIds;
     }

@@ -124,14 +124,20 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
                         <a class="dropdown-item" href="user-profile-lite.html">
-                            <i class="material-icons">&#xE7FD;</i> Profile</a>
+                            <i class="material-icons">&#xE7FD;</i> 个人信息</a>
                         <a class="dropdown-item" href="components-blog-posts.html">
-                            <i class="material-icons">vertical_split</i> Blog Posts</a>
+                            <i class="material-icons">vertical_split</i> 订单管理</a>
+                        <div th:if="${session.user_session.getAuthorityName().equals('Seller')}">
                         <a class="dropdown-item" href="add-new-post.html">
-                            <i class="material-icons">note_add</i> Add New Post</a>
+                            <i class="material-icons">note_add</i> 创建产品</a>
+                        </div>
+                        <div th:if="${session.user_session.getAuthorityName().equals('Memeber')}">
+                            <a class="dropdown-item" href="add-new-post.html">
+                                <i class="material-icons">note_add</i> 创建订单</a>
+                        </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="/logOut">
-                            <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                            <i class="material-icons text-danger">&#xE879;</i> 登出 </a>
                     </div>
                 </li>
             </ul>

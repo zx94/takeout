@@ -20,8 +20,11 @@ public class WebMvcCfg implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/user/**")
+                .addPathPatterns("/seller/**")
+                .addPathPatterns("/member/**")
                 .addPathPatterns("/products/**")
                 .addPathPatterns("/category/**")
+                .addPathPatterns("/order/**")
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/static/**");
     }

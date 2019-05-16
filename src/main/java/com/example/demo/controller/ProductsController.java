@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.example.demo.helper.SysConst.USER_SESSION_KEY;
@@ -42,13 +43,15 @@ public class ProductsController {
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Product product, @RequestParam List<String> controlIdsValue, BindingResult result, Model model, HttpSession session) {
+    public String create(@ModelAttribute Product product, BindingResult result, Model model, HttpSession session) {
         final User user = (User) session.getAttribute(USER_SESSION_KEY);
+        String rap= product.getCategoryName().replaceAll("，",",");
+        List<String> controlNames = Arrays.asList(rap.split(","));
         //@Valid注解启动后台校验,
         if (result.hasErrors()) {
             model.addAttribute("hintMessage", "出错啦！");
         } else {
-            service.createProduct(product,controlIdsValue,user);
+            service.createProduct(product,controlNames,user);
         }
         return "redirect:/product/index";
     }
