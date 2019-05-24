@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" class="no-js h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!-- 头部 -->
+<div th:include="head :: head"></div>
+<link href="/static/css/glyphicons.css" rel="stylesheet" />
+<link rel="stylesheet" href="/static/backend/css/skins/_all-skins.css">
+<link rel="stylesheet" href="/static/backend/css/style.css">
+
+
+<body class="h-100">
+<!--设置配色-->
+<div th:include="head :: setting"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Memeber'}" th:include="menu :: sidebar"></div>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+            <!-- 上方导航栏 -->
+            <div th:include="head :: navbar"></div>
+            <div class="main-content-container container-fluid px-4">
+                <!-- Page Header -->
+                <div class="content-wrapper">
+                    <link rel="stylesheet" href="/static/backend/plugins/fileinput/fileinput.min.css">
+                    <style type="text/css" rel="stylesheet">.div-thumbnail {
+                        transition: all .5s ease-in-out;
+                        padding: 10px
+                    }
+
+                    .thumbnail {
+                        margin-bottom: 0
+                    }</style>
+
+                    <section class="content-header" id="animated-header">
+                        <h3 class="page-title">附件管理</h3>
+                        <a class="btn-header" id="showForm" href="javascript:void(0)">
+                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>上传
+                        </a>
+                    </section>
+
+                    <section class="content container-fluid" id="animated-content">
+                        <div class="row" id="uploadForm" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="file-loading">
+                                        <input id="uploadImg" class="file-loading" type="file" multiple name="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div th:each="a,iterStat:${attachments}">
+                                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 div-thumbnail"
+                                     th:onclick="halo.layerModal('/attachment/attachment?attachId='${a.id},'附件详情')">
+                                    <a href="javascript:void(0)" class="thumbnail">
+                                        <img th:src="${a.thumbnailUrl}" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div th:include="footer :: footer"></div>
+            <div th:include="footer :: js"></div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
+<footer>
+    <script type="application/javascript" id="footer_script">
+        $('#uploadImg').fileinput({
+            language: 'zh',
+            uploadUrl: '/attachment/upload',
+            uploadAsync: true,
+            allowedFileExtensions: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'psd'],
+            maxFileCount: 100,
+            enctype: 'multipart/form-data',
+            showClose: false
+        }).on("filebatchuploadcomplete", function (event, files, extra) {
+            $("#uploadForm").hide(400);
+            halo.showMsgAndRedirect('上传成功！', 'success', 1000, '/attachment', "${options.admin_pjax!'true'}");
+        });
+        $("#showForm").click(function () {
+            $("#uploadForm").slideToggle(400);
+        });
+    </script>
+</footer>
+

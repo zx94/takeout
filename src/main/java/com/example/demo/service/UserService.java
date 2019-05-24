@@ -31,12 +31,14 @@ public class UserService {
         if(u.getAuthorityName().equals(AuthorityEnum.Seller.getValue())){
             Seller seller=new Seller();
             seller.setLoginAccount(u.getUserName());
+            seller.setName(u.getUserName());
             sellerService.createSeller(seller);
         }
 
         if(u.getAuthorityName().equals(AuthorityEnum.Member.getValue())){
             Member member=new Member();
             member.setName(u.getUserName());
+            member.setMemberName(u.getUserName());
             memberService.createMember(member);
         }
 
@@ -47,9 +49,7 @@ public class UserService {
     }
 
     public void activeUser(Long id){
-        User u = mapper.findById(id);
-        u.setIsValid(true);
-        mapper.update(id,u);
+        mapper.active(id);
     }
     public void deleteUser(Long id){
         mapper.delete(id);

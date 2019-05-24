@@ -31,37 +31,83 @@
   </resultMap>
 
   <insert id="create" parameterType="com.example.demo.entity.Order">
-        insert into order(id,order_number,description,order_state,distribute_address,
+        insert into `order`(id,order_number,description,order_state,distribute_address,
         merchant_name,merchant_id,member_name,member_mobile,distribute_price,discount,
         pack_price,total_amount,distributer_name,distributer_id,distributer_mobile,
         distribution_name,distribution_id,been_deleted)
-        values (#{id}, #{orderNumber},#{description},#{order_state},#{distributeAddress},
+        values (#{id}, #{orderNumber},#{description},#{orderState},#{distributeAddress},
         #{merchantName}, #{merchantId},#{memberName},#{memberMobile},#{distributePrice},
         #{discount}, #{packPrice},#{totalAmount},#{distributerName},#{distributerId},
         #{distributerMobile}, #{distributionName},#{distributionId},#{beenDeleted})
     </insert>
 
   <update id="update" parameterType="com.example.demo.entity.Order">
-        update order
-        set order_state=#{u.orderState},
+        update `order`
+        <set>
+            <if test="u.orderState != null and u.orderState != ''">
+            order_state=#{u.orderState},
+            </if>
+            <if test="u.description != null and u.description != ''">
+                description=#{u.description},
+            </if>
+            <if test="u.distributeAddress != null and u.distributeAddress != ''">
+                distribute_address=#{u.distributeAddress},
+            </if>
+            <if test="u.memberMobile != null and u.memberMobile != ''">
+                member_mobile=#{u.memberMobile},
+            </if>
+            <if test="u.totalAmount != null and u.totalAmount != ''">
+                total_amount=#{u.totalAmount},
+            </if>
+            <if test="u.distributerName != null and u.distributerName != ''">
+                distributer_name=#{u.distributerName},
+            </if>
+            <if test="u.distributerMobile != null and u.distributerMobile != ''">
+                distributer_mobile=#{u.distributerMobile},
+            </if>
+        </set>
+        where id = #{u.id}
+    </update>
+
+    <update id="pay" parameterType="Long">
+        update `order`
+        set order_state=1
+        where id = #{u.id}
+    </update>
+
+    <update id="acc" parameterType="Long">
+        update `order`
+        set order_state=2
+        where id = #{u.id}
+    </update>
+
+    <update id="finised" parameterType="Long">
+        update `order`
+        set order_state=4
+        where id = #{u.id}
+    </update>
+
+    <update id="over" parameterType="Long">
+        update `order`
+        set order_state=-1
         where id = #{u.id}
     </update>
 
   <delete id="delete" parameterType="Long">
-        update order
+        update `order`
         set  been_deleted = true
         where id = #{id}
     </delete>
 
   <select id="findAll" resultMap="orderMap">
         select *
-        from order
+        from `order`
         where been_deleted = false
     </select>
 
   <select id="findById" resultMap="orderMap" parameterType="Long">
         select *
-        from order
+        from `order`
         where id = #{id} and been_deleted = false
     </select>
 

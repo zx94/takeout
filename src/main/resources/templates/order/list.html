@@ -10,7 +10,9 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:include="menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Seller')}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName().equals('Member')}" th:include="menu :: sidebar"></div>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
             <!-- 上方导航栏 -->
@@ -25,43 +27,106 @@
                     </div>
                 </div>
                 <!-- End Page Header -->
-                <a href="/user/create" th:href="@{/user/create}">
+                <div th:if="${session.user_session.getAuthorityName().equals('Admin')}">
+                <a href="/order/create" th:href="@{/order/create}">
                     <button type="button" class="mb-2 btn btn-white mr-2">
-                        创建产品
+                        创建订单
                     </button>
                 </a>
+                </div>
+                <div th:if="${session.user_session.getAuthorityName().equals('Member')}">
+                    <a href="/order/create" th:href="@{/order/create}">
+                        <button type="button" class="mb-2 btn btn-white mr-2">
+                            创建订单
+                        </button>
+                    </a>
+                </div>
                 <!-- Default Light Table -->
                 <div class="row">
                     <div class="col">
                         <div class="card card-small mb-4">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Active Users</h6>
+                                <h6 class="m-0">订单列表</h6>
                             </div>
                             <div class="card-body p-0 pb-3 text-center">
                                 <table class="table mb-0">
                                     <thead class="bg-light">
                                     <tr>
-                                        <th scope="col" class="border-0">序号</th>
-                                        <th scope="col" class="border-0">UserName</th>
-                                        <th scope="col" class="border-0">Authority</th>
-                                        <th scope="col" class="border-0">Password</th>
+                                        <th scope="col" class="border-0">订单号</th>
+                                        <th scope="col" class="border-0">描述</th>
+                                        <th scope="col" class="border-0">订单状态</th>
+                                        <th scope="col" class="border-0">配送地址</th>
+                                        <th scope="col" class="border-0">商户名称</th>
+                                        <th scope="col" class="border-0">会员名称</th>
+                                        <th scope="col" class="border-0">联系电话</th>
+                                        <th scope="col" class="border-0">合计金额</th>
+                                        <th scope="col" class="border-0">配送员名称</th>
+                                        <th scope="col" class="border-0">配送员联系电话</th>
                                         <th scope="col" class="border-0"> </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="u,iterStat:${users}">
+                                    <tr th:each="o,iterStat:${order}">
                                         <td th:text="${iterStat.count}"></td>
-                                        <td th:text="${u.userName}"></td>
-                                        <td th:text="${u.authorityName}"></td>
-                                        <td th:text="${u.password}"></td>
+                                        <td th:text="${o.description}"></td>
+
+                                        <td th:if="${o.orderState==-1}" th:text="已取消"></td>
+                                        <td th:if="${o.orderState==0}" th:text="未支付"></td>
+                                        <td th:if="${o.orderState==1}" th:text="已支付"></td>
+                                        <td th:if="${o.orderState==2}" th:text="已接单"></td>
+                                        <td th:if="${o.orderState==3}" th:text="配送中"></td>
+                                        <td th:if="${o.orderState==4}" th:text="已完成"></td>
+
+                                        <td th:text="${o.distributeAddress}"></td>
+                                        <td th:text="${o.merchantName}"></td>
+                                        <td th:text="${o.memberName}"></td>
+                                        <td th:text="${o.memberMobile}"></td>
+                                        <td th:text="${o.totalAmount}"></td>
+                                        <td th:text="${o.distributerName}"></td>
+                                        <td th:text="${o.distributerMobile}"></td>
                                         <td>
-                                            <a th:href="@{'/user/edit/'+${u.id}}">
+                                            <div th:if="${session.user_session.getAuthorityName().equals('Member')}">
+                                                <a th:href="@{'/order/over/'+${o.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">取消订单</button>
+                                                </a>
+                                                <div th:if="${o.orderState.equals(0)}">
+                                                <a th:href="@{'/order/pay/'+${o.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">支付</button>
+                                                </a>
+                                                |
+                                                </div>
+                                                <div th:if="${o.orderState.equals(3)}">
+                                                    <a th:href="@{'/order/finised/'+${o.id}}">
+                                                        <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">完成</button>
+                                                    </a>
+                                                    |
+                                                </div>
+                                            </div>
+
+                                            <div th:if="${session.user_session.getAuthorityName().equals('Seller')}">
+                                                <div th:if="${o.orderState.equals(1)}">
+                                                <a th:href="@{'/order/acc/'+${o.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">接单</button>
+                                                </a>
+                                                |
+                                                </div>
+                                                <div th:if="${o.orderState.equals(2)}">
+                                                    <a th:href="@{'/order/distribute/'+${o.id}}">
+                                                        <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">添加配送员</button>
+                                                    </a>
+                                                    |
+                                                </div>
+                                            </div>
+
+                                            <div th:if="${not o.orderState.equals(-1)}">
+                                            <a th:href="@{'/order/edit/'+${o.id}}">
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
                                             </a>
                                             |
-                                            <a th:href="@{'/user/delete/'+${u.id}}">
+                                            <a th:href="@{'/order/delete/'+${o.id}}">
                                                 <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
                                             </a>
+                                            </div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -71,64 +136,7 @@
                     </div>
                 </div>
                 <!-- End Default Light Table -->
-                <!-- Default Dark Table -->
-                <div class="row">
-                    <div class="col">
-                        <div class="card card-small overflow-hidden mb-4">
-                            <div class="card-header bg-dark">
-                                <h6 class="m-0 text-white">Inactive Users</h6>
-                            </div>
-                            <div class="card-body p-0 pb-3 bg-dark text-center">
-                                <table class="table table-dark mb-0">
-                                    <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col" class="border-bottom-0">#</th>
-                                        <th scope="col" class="border-bottom-0">First Name</th>
-                                        <th scope="col" class="border-bottom-0">Last Name</th>
-                                        <th scope="col" class="border-bottom-0">Country</th>
-                                        <th scope="col" class="border-bottom-0">City</th>
-                                        <th scope="col" class="border-bottom-0">Phone</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Graham</td>
-                                        <td>Brent</td>
-                                        <td>Benin</td>
-                                        <td>Ripabottoni</td>
-                                        <td>1-512-760-9094</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Clark</td>
-                                        <td>Angela</td>
-                                        <td>Estonia</td>
-                                        <td>Borghetto di Vara</td>
-                                        <td>1-660-850-1647</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Wylie</td>
-                                        <td>Joseph</td>
-                                        <td>Korea, North</td>
-                                        <td>Guelph</td>
-                                        <td>325-4351</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Garth</td>
-                                        <td>Clementine</td>
-                                        <td>Indonesia</td>
-                                        <td>Narcao</td>
-                                        <td>722-8264</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- End Default Dark Table -->
             </div>
             <div th:include="footer :: footer"></div>

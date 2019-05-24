@@ -81,6 +81,17 @@
                                             </a>
                                         </td>
                                         </div>
+                                        <div th:if="${session.user_session.getAuthorityName().equals('Admin')}">
+                                            <td>
+                                                <a th:href="@{'/products/edit/'+${p.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">编辑</button>
+                                                </a>
+                                                |
+                                                <a th:href="@{'/products/delete/'+${p.id}}">
+                                                    <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">删除</button>
+                                                </a>
+                                            </td>
+                                        </div>
                                     </tr>
                                     </tbody>
                                 </table>

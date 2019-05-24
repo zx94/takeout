@@ -25,7 +25,7 @@
                 authority_name=#{u.authorityName},
             </if>
             <if test="u.password != null and u.password != ''">
-                u.password=#{u.password},
+                `u.password=`#{u.password},
             </if>
             <if test="u.isValid != null and u.isValid != ''">
                 u.is_valid=#{u.isValid}
@@ -33,6 +33,13 @@
         </set>
         where id = #{u.id}
     </update>
+
+    <update id="active" parameterType="Long">
+        update user
+        set is_valid=true
+        where id = #{u.id}
+    </update>
+
     <delete id="delete" parameterType="Long">
         delete from user where id = #{id}
     </delete>
@@ -48,5 +55,6 @@
         from user
         where user_name = #{userName}
     </select>
+
 
 </mapper>

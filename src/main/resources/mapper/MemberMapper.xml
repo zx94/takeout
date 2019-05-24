@@ -82,4 +82,10 @@
         from member
         where name = #{name} and been_deleted = false
     </select>
+
+    <select id="findByUserName" resultMap="memberMap" parameterType="String">
+        select *
+        from member
+        where member_name = #{memberName} and been_deleted = false
+    </select>
 </mapper>

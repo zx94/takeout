@@ -1,12 +1,17 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Seller;
+import com.example.demo.entity.User;
 import com.example.demo.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+
+import static com.example.demo.helper.SysConst.USER_SESSION_KEY;
 
 @Controller
 @RequestMapping("/seller")
@@ -16,9 +21,12 @@ public class SellerController {
     private SellerService service;
 
     @GetMapping("/index")
-    public String index(Model model) {
+    public String index(HttpSession session, Model model) {
+        final User user = (User) session.getAttribute(USER_SESSION_KEY);
+        if(user.getAuthorityName().equals("Seller"))
+            return "index/seller_index";
         model.addAttribute("seller", service.getAllSellers());
-        return "index/seller_index";
+        return "seller/list";
     }
 
     @GetMapping("/create")

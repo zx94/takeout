@@ -41,4 +41,8 @@ public class MemberService {
         return mapper.findByName(Name);
     }
 
+    public Member getByUserName(String Name) {
+        return mapper.findByUserName(Name);
+    }
+
 }

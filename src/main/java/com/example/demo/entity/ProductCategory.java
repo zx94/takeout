@@ -66,7 +66,7 @@ public class ProductCategory {
      * 是否已删除
      */
     @Column(name = "been_deleted")
-    private Boolean beenDeleted;
+    private Boolean beenDeleted = false;
 
     /**
      * 分类图片

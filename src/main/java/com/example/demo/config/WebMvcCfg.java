@@ -22,6 +22,7 @@ public class WebMvcCfg implements WebMvcConfigurer {
                 .addPathPatterns("/user/**")
                 .addPathPatterns("/seller/**")
                 .addPathPatterns("/member/**")
+                .addPathPatterns("/attachment/**")
                 .addPathPatterns("/products/**")
                 .addPathPatterns("/category/**")
                 .addPathPatterns("/order/**")
@@ -29,4 +30,22 @@ public class WebMvcCfg implements WebMvcConfigurer {
                 .excludePathPatterns("/static/**");
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //前端资源文件
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
+        //主题资源文件
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/templates/themes/");
+        //本地上传资源文件
+        registry.addResourceHandler("/uploadFiles/**")
+                .addResourceLocations("file:///" + System.getProperties().getProperty("user.dir") + "/uploadFiles/");
+        //图标
+        registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/static/backend/images/favicon_lemon.ico");
+//
+//        registry.addResourceHandler("/backup/**")
+//                .addResourceLocations("file:///" + System.getProperties().getProperty("user.home") + "/halo/backup/");
+    }
 }

@@ -46,6 +46,8 @@ public class HomeController {
                 return "redirect:/user/index";
             if(user.getAuthorityName().equals("Seller"))
                 return "redirect:/seller/index";
+            if(user.getAuthorityName().equals("Member"))
+                return "redirect:/member/index";
             else
                 return "redirect:/welcome";
         }
@@ -79,6 +81,8 @@ public class HomeController {
                     return "redirect:/user/index";
                 if(data_user.getAuthorityName().equals("Seller"))
                     return "redirect:/seller/index";
+                if(user.getAuthorityName().equals("Member"))
+                    return "redirect:/member/index";
                 else
                     return "redirect:/welcome";
             }
@@ -102,6 +106,8 @@ public class HomeController {
                 return "redirect:/user/index";
             if(user.getAuthorityName().equals("Seller"))
                 return "redirect:/seller/index";
+            if(user.getAuthorityName().equals("Member"))
+                return "redirect:/member/index";
             else
                 return "redirect:/welcome";
         }

@@ -37,6 +37,7 @@ public class Order {
     @Column(name = "order_state")
     private Integer orderState;
 
+
     /**
      * 配送地址
      */
@@ -148,5 +149,5 @@ public class Order {
      * 是否已删除
      */
     @Column(name = "been_deleted")
-    private Boolean beenDeleted;
+    private Boolean beenDeleted = false;
 }

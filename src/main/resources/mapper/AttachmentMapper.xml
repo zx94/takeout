@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AttachmentMapper">
+  <resultMap id="attachmentMap" type="com.example.demo.entity.Attachment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="thumbnail_url" jdbcType="VARCHAR" property="thumbnailUrl" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="suffix" jdbcType="VARCHAR" property="suffix" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="length_and_width" jdbcType="VARCHAR" property="lengthAndWidth" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="been_deleted" jdbcType="BIT" property="beenDeleted" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="origin" jdbcType="TINYINT" property="origin" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+
+  <insert id="create" parameterType="com.example.demo.entity.Attachment">
+        insert into attachment(id, name, url, thumbnail_url,type,suffix,size,length_and_width,
+        create_time,update_time,been_deleted,location,origin,create_user,update_user)
+        values (#{id}, #{name}, #{url}, #{thumbnailUrl},#{type},#{suffix},#{size},#{lengthAndWidth},
+        #{createTime},#{updateTime},#{beenDeleted},#{location},#{origin},#{createUser},#{updateUser})
+    </insert>
+
+  <update id="update" parameterType="com.example.demo.entity.Attachment">
+        update attachment
+        <set>
+            <if test="u.name != null and u.name != ''">
+                name=#{u.name},
+            </if>
+            <if test="u.url != null and u.url != ''">
+                url=#{u.url},
+            </if>
+            <if test="u.thumbnailUrl != null and u.thumbnailUrl != ''">
+                thumbnail_url=#{u.thumbnailUrl},
+            </if>
+            <if test="u.suffix != null and u.suffix != ''">
+                suffix=#{u.suffix},
+            </if>
+            <if test="u.size != null and u.size != ''">
+                size=#{u.size},
+            </if>
+            <if test="u.lengthAndWidth != null and u.lengthAndWidth != ''">
+                length_and_width=#{u.lengthAndWidth},
+            </if>
+            <if test="u.location != null and u.location != ''">
+                location=#{u.location},
+            </if>
+            <if test="u.origin != null and u.origin != ''">
+                origin=#{u.origin},
+            </if>
+            <if test="u.createUser != null and u.createUser != ''">
+                create_user=#{u.createUser},
+            </if>
+            <if test="u.updateUser != null and u.updateUser != ''">
+                update_user=#{u.updateUser},
+            </if>
+        </set>
+        where id = #{u.id}
+    </update>
+
+  <delete id="delete" parameterType="Long">
+        update attachment
+        set  been_deleted=true
+        where id = #{id}
+    </delete>
+
+  <select id="findAll" resultMap="attachmentMap">
+        select *
+        from attachment
+        where been_deleted = false
+    </select>
+
+  <select id="findById" resultMap="attachmentMap" parameterType="Long">
+        select *
+        from attachment
+        where id = #{id} and been_deleted = false
+    </select>
+
+  <select id="findByName" resultMap="attachmentMap" parameterType="String">
+        select *
+        from attachment
+        where name = #{name} and been_deleted = false
+    </select>
+</mapper>

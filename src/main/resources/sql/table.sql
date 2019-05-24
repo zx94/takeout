@@ -107,7 +107,8 @@ CREATE TABLE `product_category` (
 CREATE TABLE `order` (
   `id` bigint(20) NOT NULL COMMENT '主键id',
   `order_number` varchar(30) DEFAULT NULL COMMENT '订单号',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `description` varchar(255)
+   NULL COMMENT '描述',
   `order_state` int(1) DEFAULT NULL COMMENT '订单状态（-1：已取消, 0：未支付，1：已支付；2：已接单，3: 配送中，4: 已完成）',
   `distribute_address` varchar(500) DEFAULT NULL COMMENT '配送地址',
   `merchant_name` varchar(30) DEFAULT NULL COMMENT '商户名称',
@@ -155,3 +156,22 @@ CREATE TABLE `product_to_category`
     `category_id` bigint(20) NOT NULL COMMENT '种类id',
     PRIMARY KEY(product_id,category_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品种类中间表';
+
+CREATE TABLE `attachment` (
+                              `id` bigint(20) NOT NULL COMMENT '主键id',
+                              `name` varchar(255) DEFAULT NULL COMMENT '附件名',
+                              `url` varchar(255) DEFAULT NULL COMMENT 'url',
+                              `thumbnail_url` varchar(255) DEFAULT NULL COMMENT '缩略图url',
+                              `type` VARCHAR(20) DEFAULT NULL COMMENT '类型',
+                              `suffix` VARCHAR(10) DEFAULT NULL COMMENT '后缀',
+                              `size` VARCHAR(10) DEFAULT NULL COMMENT '大小',
+                              `length_and_width` varchar(255) DEFAULT NULL COMMENT '长宽',
+                              `create_time` datetime DEFAULT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间(订单时间)',
+                              `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据最后一次更新时间',
+                              `been_deleted` tinyint(1) DEFAULT FALSE COMMENT '是否已删除',
+                              `location` varchar(500) DEFAULT NULL COMMENT '存储位置（本地 或者 云）',
+                              `origin` TINYINT(1) DEFAULT NULL COMMENT '来源',
+                              `create_user` VARCHAR(20) DEFAULT NULL COMMENT '创建人',
+                              `update_user` VARCHAR(20) DEFAULT NULL COMMENT '最后更新人',
+                              PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='附件表';

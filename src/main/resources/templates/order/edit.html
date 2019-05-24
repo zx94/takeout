@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="no-js h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!-- 头部 -->
+<div th:include="head :: head"></div>
+<body class="h-100">
+<div th:include="head :: setting"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:if="${session.user_session.getAuthorityName()=='Admin'}" th:include="admin_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Seller'}" th:include="seller_menu :: sidebar"></div>
+        <div th:if="${session.user_session.getAuthorityName()=='Member'}" th:include="menu :: sidebar"></div>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+
+            <!-- 上方导航栏 -->
+            <div th:include="head :: navbar"></div>
+
+            <!-- / .main-navbar -->
+            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <i class="fa fa-check mx-2"></i>
+                <strong>请完善以下订单信息</strong>
+            </div>
+
+            <div class="main-content-container container-fluid px-4">
+                <!-- Page Header -->
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <span class="text-uppercase page-subtitle">Overview</span>
+                        <h3 class="page-title">订单编辑</h3>
+                    </div>
+                </div>
+                <!-- End Page Header -->
+                <!-- Default Light Table -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-small mb-4">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">订单编辑</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item p-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="/order/edit" method="post" th:action="@{/order/edit}" th:method="post" th:object="${order}">
+                                                <div class="form-group">
+                                                    <label th:for="name">配送地址</label>
+                                                    <input type="text" th:field="*{distributeAddress}" class="form-control" placeholder="distributeAddress"></div>
+
+                                                <div class="form-group">
+                                                    <label th:for="price">联系电话</label>
+                                                    <input type="text" th:field="*{memberMobile}" class="form-control" placeholder="memberMobile"></div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label th:for="description">描述</label>
+                                                        <textarea class="form-control" name="feDescription" rows="5" th:field="*{description}"></textarea>
+                                                    </div>
+                                                </div>
+
+<!--                                                <div class="form-group">-->
+<!--                                                    <label th:for="productName">产品</label>-->
+<!--                                                    <select th:field="*{productName}"  class="form-control">-->
+<!--                                                        <option th:value="请选择">-&#45;&#45;请选择-&#45;&#45;</option>-->
+<!--                                                        <option th:each="auth:${products}" th:value="${auth.id}" th:text="${auth.name}"></option>-->
+<!--                                                        &lt;!&ndash;                                                        <option th:value="admin" th:text="管理员">管理员</option>&ndash;&gt;-->
+<!--                                                        &lt;!&ndash;                                                        <option th:value="seller" th:text="卖家">卖家</option>&ndash;&gt;-->
+<!--                                                    </select>-->
+<!--                                                </div>-->
+
+                                                <button type="submit" class="btn btn-accent">提交</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Default Light Table -->
+            </div>
+            <div th:include="footer :: footer"></div>
+        </main>
+    </div>
+</div>
+<div th:include="footer :: js"></div>
+<script src="https://cdn.bootcss.com/bootstrap-multiselect/0.9.10/js/bootstrap-multiselect.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-multiselect/0.9.10/css/bootstrap-multiselect.css" rel="stylesheet">
+<script type="text/javascript">
+    $(document).ready(function() {
+        //控制点字符串类似于1,2,3
+        var controlIdsValueStr = $("#controlIdsValue").val();
+        //按,拆分成数组
+        var controlIdsValueArr = controlIdsValueStr.split(",");
+        //如果字符串不为空就进行选中操作
+        if (controlIdsValueStr){
+            //根据id获取所有option
+            var controlOptions = document.getElementById("controlIds");
+            //遍历所有option 有与控制点数组中相等的就选中
+            for (var i = 0;i<controlOptions.options.length;i++){
+                for (var j = 0; j < controlIdsValueArr.length; j++) {
+                    if (controlOptions.options[i].value==controlIdsValueArr[j]){
+                        console.log(controlIdsValueArr[j])
+                        controlOptions.options[i].selected=true;
+                    }
+                }
+            }
+        }
+        //将下拉选变成下拉多选，使其可以选择
+        $('#controlIds').multiselect();
+    });
+</script>
+</body>
+</html>

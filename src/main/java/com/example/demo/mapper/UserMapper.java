@@ -14,8 +14,11 @@ public interface UserMapper {
     void delete(Long id);
     void update(Long id, User u);
 
+    void active(Long id);
+
     List<User> findAll();
     User findById(Long id);
     User findByUserName(String userName);
+
 }
 

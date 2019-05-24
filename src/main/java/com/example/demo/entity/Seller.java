@@ -165,5 +165,5 @@ public class Seller {
      * 是否已删除
      */
     @Column(name = "been_deleted")
-    private Boolean beenDeleted;
+    private Boolean beenDeleted = false;
 }
