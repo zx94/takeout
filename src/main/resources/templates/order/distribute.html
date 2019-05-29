@@ -47,6 +47,7 @@
                                         <div class="col">
                                             <form action="/order/distribute" method="post" th:action="@{/order/distribute}" th:method="post" th:object="${order}">
                                                 <div class="form-group">
+                                                    <input type="hidden" th:field="*{id}">
                                                     <label th:for="name">配送人员名称</label>
                                                     <input type="text" th:field="*{distributerName}" class="form-control" placeholder="distributerName"></div>
 

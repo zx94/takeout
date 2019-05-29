@@ -88,7 +88,7 @@
                                             <div th:if="${session.user_session.getAuthorityName().equals('Member')}">
                                                 <a th:href="@{'/order/over/'+${o.id}}">
                                                     <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">取消订单</button>
-                                                </a>
+                                               </a>
                                                 <div th:if="${o.orderState.equals(0)}">
                                                 <a th:href="@{'/order/pay/'+${o.id}}">
                                                     <button class="mb-2 btn btn-sm btn-outline-danger mr-1" type="button">支付</button>

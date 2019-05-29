@@ -85,8 +85,7 @@ public class OrderController {
         if (result.hasErrors()) {
             model.addAttribute("hintMessage", "出错啦！");
         } else {
-            order.setOrderState(3);
-            service.updateOrder(order.getId(),order);
+            service.distributeOrder(order.getId(),order);
         }
         return "redirect:/order/index";
     }

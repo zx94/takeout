@@ -28,15 +28,12 @@ public class OrderService{
 
     public void createOrder(OrderDto u) {
         u.getDistributeAddress();
-
         Product product= productsService.getByName(u.getProductName()).get(0);
-
         Order order=new Order();
         order.setDistributeAddress(u.getDistributeAddress());
         order.setMemberMobile(u.getMemberMobile());
         order.setDistributeAddress(u.getDistributeAddress());
         order.setId(idWorker.nextId());
-
         order.setTotalAmount(product.getPrice());
         order.setOrderState(0);
         order.setBeenDeleted(false);
@@ -66,6 +63,10 @@ public class OrderService{
 
     public void overOrder(Long id) {
         mapper.over(id);
+    }
+
+    public void distributeOrder(Long id,Order u) {
+        mapper.distribute(id,u);
     }
 
 }

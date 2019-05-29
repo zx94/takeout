@@ -69,6 +69,12 @@
         where id = #{u.id}
     </update>
 
+    <update id="distribute" parameterType="com.example.demo.entity.Order">
+        update `order`
+        set order_state=3,distributer_name=#{u.distributerName},distributer_mobile=#{u.distributerMobile}
+        where id = #{u.id}
+    </update>
+
     <update id="pay" parameterType="Long">
         update `order`
         set order_state=1

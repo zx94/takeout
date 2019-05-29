@@ -25,7 +25,7 @@
                 authority_name=#{u.authorityName},
             </if>
             <if test="u.password != null and u.password != ''">
-                `u.password=`#{u.password},
+                `u.password`=#{u.password},
             </if>
             <if test="u.isValid != null and u.isValid != ''">
                 u.is_valid=#{u.isValid}
